@@ -84,7 +84,7 @@ React 19 · TypeScript 5.8 · Vite 7 · Tailwind 4 · shadcn/ui · TanStack Quer
 - A separate legacy suite, `ekko-test-automation` (Playwright + Gherkin against `app-qa.ekkomd.com`), exists. Its committed QA credentials are a known hygiene problem: **never copy, reuse or repeat credentials from it.**
 
 ## Where V2's expected behavior is defined
-- `.ai/features/<slug>/spec.md`: feature specs. Their acceptance criteria become test names. Check the `status` frontmatter first: `in-build` is the working set, `shipped` is history, and `draft` or `stub` is not a requirement.
+- `.ai/features/<slug>/spec.md`: feature specs. Their acceptance criteria become test names. Check the `status` frontmatter first (lifecycle in `.ai/features/README.md`): `in-development` is the working set, `backlog` is the pipeline, `done` is history, and `draft` or `stub` is not a requirement. Older syncs used `in-build` and `shipped`; read them the same way.
 - `plans/<feature>/` (plan.md, HAZARDS.md, DESIGN-SOURCES.md, …) shows how a feature was meant to be built and the risks already known. HAZARDS files are ready-made test ideas.
 - `.ai/rules/` (coding, security, api, compliance), `.ai/constitution.md` and `.ai/architecture/decisions/` hold the non-negotiables and ADRs. Cite them by path and anchor.
 - `DEBT.md` lists known, accepted shortcuts. Don't report an entry there as a new bug unless its "bites when" condition has been hit.
