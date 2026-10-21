@@ -67,6 +67,21 @@ No secrets, credentials or PHI here, ever.
 - `DEBT.md`: `src/ekko-ds/MANIFEST` line order varies by machine collation. That is known and benign;
   don't report it as a bug.
 
+## Patients module (researched 2026-10-21 on `codex/v2-23-mobile-validation` @ 2c09e2a)
+- Test suite (212 cases, IDs `PAT-<AREA>-NNN`): Claude Doc https://claude.ai/artifact/C9LauSqX9So2t3rPcBpMhd
+- Hub spec `features/patient-management/spec.md` is NOT synced into the repo (.ai is one commit behind hub);
+  read acceptance criteria via `plans/patient-management/*` and `DEBT.md`.
+- Backend `ekko-coreService-nodejs` `main` has NO `/v2/*` routes; the app's /v2/patients calls come from an
+  unmerged backend branch (#1545 lineage). Backend rules from `main` (/patients) are second-hand for api-dev2.
+- Create patient lives in the New visit drawer (`/visits/new?newPatient=1`); ekko-ds NewPatientDrawer/ABHA not wired.
+- Edit = PATCH `/v2/patients/:id/profile` with `revision` (409 on conflict), though DEBT.md says read-only. Asked Jasper.
+- Suspected gaps to verify first: no duplicate-patient check; title never sent; card Cancel and create-drawer scrim
+  discard drafts silently; allergy typing not a draft; load-more failures silent; visit-preview and WhatsApp caches
+  not evicted on patient switch; sort menu ignores Esc; WhatsApp withdraw unconfirmed; 3 vs 5 gender options;
+  create toast shows raw server message; mobile ≤767 blank screen when roster collapsed with no selection.
+- Older backend (main) suspects: `?current_user_id=` impersonation, gender missing → 500, unvalidated sort_by → 500,
+  unbounded limit, stack traces in error bodies, no audit except patient view, mime type trusted, no virus scan.
+
 ## Design-system notes
 - ekko-ds rules: tokens only; control heights 24/30/36/44; even spacing; fixed status tone map;
   no dashes and no "SOAP" in UI copy; no native `<select>`, `type="date"` or `title` tooltips.
@@ -103,3 +118,4 @@ No secrets, credentials or PHI here, ever.
 - 2026-10-21: Logged in to app-dev-v2 (broken API host) and local dev; captured Visits dashboard. Found app-dev2 is the live
   V2 dev site, traced it to `codex/v2-23-mobile-validation`, tested login for both roles, logged 2 bugs + 2 questions.
 - 2026-10-21: Jasper asked for memory to be saved automatically, without asking. See "Memory" in hawk.md.
+- 2026-10-21: Wrote the Patients module test suite (212 cases) as a Claude Doc; findings above.
