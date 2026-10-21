@@ -26,9 +26,27 @@ No secrets, credentials or PHI here, ever.
     If any is unset, mark login-dependent tests as blocked.
   - In the Default environment (2026-10-21), `auth-dev`, `api-dev` and `app-qa.ekkomd.com` were all unreachable
     until the domains were allowed. Re-check reachability before reporting environment blockers.
-- Dev hosts: Auth0 `auth-dev.ekkomd.com`, API `api-dev.ekkomd.com`. A push to `dev` deploys the V2 dev build
-  (`.github/workflows/deploy-v2-dev.yml`). V2 dev app URL: **not yet recorded; add it here once found.**
+- **Live V2 dev app (current): `https://app-dev2.ekkomd.com`** (confirmed by Jasper, 2026-10-21).
+  - API `api-dev2.ekkomd.com`; Auth0 tenant `dev-iqxyolpw0karbhgx.us.auth0.com`; audience `https://api-dev2.ekkomd.com`
+    (real access tokens, so the v1 token bug is fixed here).
+  - Built from **`ekko-web-app` branch `codex/v2-23-mobile-validation`** (author Iancalvinj), NOT `dev`. Matched by
+    `/v2/visits/search`, `/v2/settings/*`, "Pending intake", the Seats copy and Libre Baskerville, none of which exist on `dev`.
+  - Not deployed by GitHub Actions (no run targets it); likely manual upload to S3/CloudFront. Check `last-modified`
+    on the page against the branch head to confirm what's live.
+  - Login flow: `/signup` → "Log In" link → Auth0 identifier page → password page → `/onboarding/pick-workspace` → role home.
+    Both test accounts work; workspace **TEST10** (1 Doctor, 1 Org Admin, 0 visits as of 2026-10-21).
+- Old V2 dev app: `https://app-dev-v2.ekkomd.com` (Auth0 `auth-dev`, built from `dev` by `deploy-v2-dev.yml`, last run
+  2026-09-17). **Broken:** secret `DEV_V2_VITE_CORE_SERVICE_URL` = `auth-dev.ekkomd.com`, so every API call hits Auth0
+  and fails CORS ("Couldn't load your workspaces"). The org admin test account does not work there (wrong password).
+- `dev` has not moved since 2026-09-17 (`a1bd5af`); active V2 work is on feature branches.
+- Local run against `api-dev`: `.env.local` (gitignored) with `VITE_CORE_SERVICE_URL=api-dev.ekkomd.com`; the public SPA
+  client ID can be read from the deployed bundle. Never commit it.
 - Local: `npm run dev` serves on port 5173 (strictPort). `.env.example` lists the `VITE_*` vars.
+- Network: `i.ibb.co` (Auth0 login logo) is blocked in the Hawk environment. Harmless; not an app bug.
+- Browser automation: use the globally installed Playwright (`npm root -g`), not a fresh `npm i playwright`
+  (its browser version won't match `/opt/pw-browsers`). Keep scripts in scratch, outside every repo.
+- Safety: rerouting app traffic or injecting CORS headers in Playwright is blocked as security weakening.
+  Run the app locally with the right env instead.
 - Git quirk: shallow clones here track only one branch, so `git status` can't see pushed branches and
   stop hooks warn about "unpushed" commits. Fix it with
   `git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*' && git fetch origin <branch>`.
@@ -59,8 +77,24 @@ No secrets, credentials or PHI here, ever.
 - [ ] Merge `ekko-web-app` PR #77 (and `jasatekkomd/Hawk` PR #1).
 - [ ] Jasper to rotate the QA account password (it was shared in chat on 2026-10-21) and store the new one only in the Hawk environment.
 - [ ] Rotate the credentials committed in `ekko-test-automation`.
-- [ ] Record the V2 dev app URL above.
+- [x] Record the V2 dev app URL (app-dev2, 2026-10-21).
+- [ ] Fix secret `DEV_V2_VITE_CORE_SERVICE_URL` for `app-dev-v2` (or retire that site).
+- [ ] Get a doctor-only account on `api-dev`: there, the "doctor" test account also has Org Admin, so it lands on `/settings`.
 - [ ] First baseline pass on `dev`: full suite, contract gate, build/lint; list failures and untested risk areas.
+
+## Bugs and questions (app-dev2 unless noted)
+- 2026-10-21 · Medium · Space › Overview › Seats shows "FREE SEATS 2" over "2 assigned · none available". Status: reported to Jasper, not filed.
+- 2026-10-21 · Low · Visits empty state differs by width: 1440 "No visits match the current filters" (default filters
+  In Progress + Not Started) vs 1024 "No visits yet." (Ready for sign-off). Status: reported, not filed.
+- 2026-10-21 · Question · Overview H1 renders Libre Baskerville 26px/400; ekko-ds uses 26px only for Geist Mono stats.
+  Unverified: ekko-design-system is private and wasn't attached.
+- 2026-10-21 · Question (dev code) · `role-home.ts` sends any user with org_admin to `/settings`, so a doctor+admin
+  never lands on Visits; its own comment suggests the opposite.
+- 2026-10-21 · Lead (dev, local) · Visits list looked empty after resizing across 1280 without reload; fine after reload. Unconfirmed.
+- Breakpoint note: two-pane Visits switches at 1280 (Tailwind `xl`, per the feature spec), not ekko-ds's 1024.
 
 ## Log
 - 2026-10-21: Hawk created, tuned to V2 and ekko-ds, memory seeded. No tests run yet.
+- 2026-10-21: Logged in to app-dev-v2 (broken API host) and local dev; captured Visits dashboard. Found app-dev2 is the live
+  V2 dev site, traced it to `codex/v2-23-mobile-validation`, tested login for both roles, logged 2 bugs + 2 questions.
+- 2026-10-21: Jasper asked for memory to be saved automatically, without asking. See "Memory" in hawk.md.

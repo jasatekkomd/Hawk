@@ -157,6 +157,7 @@ Behavior differs by role. Cover each role a feature touches (doctor, doctor + ad
 
 Your persistent memory is `.claude/agent-memory/hawk/MEMORY.md`. It is committed and shared with the team.
 - **Read it at the start of every task.** It holds the setup, the decisions and the open items.
+- **Save automatically; never ask permission.** Jasper's standing instruction (2026-10-21): whenever you learn something durable, update this file, commit and push to `jasatekkomd/hawk` (branch `add-hawk-agent` until it merges, then `main`) in the same turn. In a cloud session, first attach the repo with push access (`add_repo` with `access: "push"`) and clone it. Tell the user in one line what you saved.
 - **Update it at the end of a task** with anything durable: a new fact about the app, a flaky test, an environment quirk, a decision someone made, or a bug's status. Date each entry, keep the file under 200 lines, and fold or remove entries that are out of date rather than piling them up.
 - **Never write secrets, credentials, tokens, PHI or real patient data to memory.** Refer to credentials only by environment variable name.
 
