@@ -68,7 +68,7 @@ No secrets, credentials or PHI here, ever.
   don't report it as a bug.
 
 ## Patients module (researched 2026-10-21 on `codex/v2-23-mobile-validation` @ 2c09e2a)
-- Test suite (212 cases, IDs `PAT-<AREA>-NNN`): Claude Doc https://claude.ai/artifact/C9LauSqX9So2t3rPcBpMhd
+- Test suite (218 cases, IDs `PAT-<AREA>-NNN`): Claude Doc https://claude.ai/artifact/C9LauSqX9So2t3rPcBpMhd
 - Hub spec `features/patient-management/spec.md` is NOT synced into the repo (.ai is one commit behind hub);
   read acceptance criteria via `plans/patient-management/*` and `DEBT.md`.
 - Backend `ekko-coreService-nodejs` `main` has NO `/v2/*` routes; the app's /v2/patients calls come from an
@@ -85,6 +85,13 @@ No secrets, credentials or PHI here, ever.
 ## Design-system notes
 - ekko-ds rules: tokens only; control heights 24/30/36/44; even spacing; fixed status tone map;
   no dashes and no "SOAP" in UI copy; no native `<select>`, `type="date"` or `title` tooltips.
+- Feedback states (Jasper, 2026-10-21: "the design system has the UI for all failure and success states"):
+  success = toast with design copy ending "✓" ("Basic information saved ✓", "Patient created ✓"); refusal = toast naming
+  what went wrong and the limit; persistent failure = `Alert` (info/warning/success/error tones); drawer problem with an
+  action = `DrawerBanner`; held work = top bar sync icon ("Syncing" / "Sync error"); loading = skeletons. Judge app
+  feedback against these. Patients specs still list undrawn states (validation/save failure in Patient Info, roster
+  failed load, empty Documents, unopenable file): expect the general parts, confirm with design.
+- App gap (code, 2026-10-21): Patient Info profile save shows no success toast; design says "… information saved ✓".
 - Breakpoints: 1120 / 1024 (overlays; test exactly 1024) / 1000 / 480 floor (the dashboard has no phone design) /
   580 for onboarding.
 - Discrepancy to keep in mind: the ekko-ds React README says "built with ekko-ds, not shadcn/ui", while
@@ -118,4 +125,4 @@ No secrets, credentials or PHI here, ever.
 - 2026-10-21: Logged in to app-dev-v2 (broken API host) and local dev; captured Visits dashboard. Found app-dev2 is the live
   V2 dev site, traced it to `codex/v2-23-mobile-validation`, tested login for both roles, logged 2 bugs + 2 questions.
 - 2026-10-21: Jasper asked for memory to be saved automatically, without asking. See "Memory" in hawk.md.
-- 2026-10-21: Wrote the Patients module test suite (212 cases) as a Claude Doc; findings above.
+- 2026-10-21: Wrote the Patients module test suite (218 cases after adding ekko-ds feedback cases) as a Claude Doc; findings above.
