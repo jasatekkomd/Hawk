@@ -42,6 +42,9 @@ No secrets, credentials or PHI here, ever.
 - Local run against `api-dev`: `.env.local` (gitignored) with `VITE_CORE_SERVICE_URL=api-dev.ekkomd.com`; the public SPA
   client ID can be read from the deployed bundle. Never commit it.
 - Local: `npm run dev` serves on port 5173 (strictPort). `.env.example` lists the `VITE_*` vars.
+- ekko-design-system is NOT attached by default. In a cloud session, attach it read-only (`add_repo`
+  Aidocscribe/ekko-design-system, read) and clone shallow to `/home/user/ekko-design-system`. Push is refused (read-only by design).
+  Checked at `fccc0fb` (2026-10-20).
 - Network: `i.ibb.co` (Auth0 login logo) is blocked in the Hawk environment. Harmless; not an app bug.
 - Browser automation: use the globally installed Playwright (`npm root -g`), not a fresh `npm i playwright`
   (its browser version won't match `/opt/pw-browsers`). Keep scripts in scratch, outside every repo.
@@ -83,11 +86,13 @@ No secrets, credentials or PHI here, ever.
 - [ ] First baseline pass on `dev`: full suite, contract gate, build/lint; list failures and untested risk areas.
 
 ## Bugs and questions (app-dev2 unless noted)
-- 2026-10-21 · Medium · Space › Overview › Seats shows "FREE SEATS 2" over "2 assigned · none available". Status: reported to Jasper, not filed.
+- 2026-10-21 · ~~Medium · Seats card "FREE SEATS 2 / 2 assigned · none available"~~ **Retracted: not a bug.** Per ekko-ds
+  `WorkspaceOverview.tsx`, each column is "<plan tier> seats" with the TOTAL as the number; "Free" is the tier name, not "unused".
+  Lesson: check the ds component before reporting copy that looks contradictory.
 - 2026-10-21 · Low · Visits empty state differs by width: 1440 "No visits match the current filters" (default filters
   In Progress + Not Started) vs 1024 "No visits yet." (Ready for sign-off). Status: reported, not filed.
-- 2026-10-21 · Question · Overview H1 renders Libre Baskerville 26px/400; ekko-ds uses 26px only for Geist Mono stats.
-  Unverified: ekko-design-system is private and wasn't attached.
+- 2026-10-21 · Low · Overview H1: the serif is correct (`--font-display` = Libre Baskerville, settings page titles,
+  chosen 2026-09-08), but the app renders it at **26px**; ekko-ds `.set-head h1` specifies **22px / 26px line-height**. Status: reported, not filed.
 - 2026-10-21 · Question (dev code) · `role-home.ts` sends any user with org_admin to `/settings`, so a doctor+admin
   never lands on Visits; its own comment suggests the opposite.
 - 2026-10-21 · Lead (dev, local) · Visits list looked empty after resizing across 1280 without reload; fine after reload. Unconfirmed.
