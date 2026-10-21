@@ -100,6 +100,15 @@ React 19 · TypeScript 5.8 · Vite 7 · Tailwind 4 · shadcn/ui · TanStack Quer
 - **No PHI in logs or URLs**: production builds drop `console`. Check that error paths, query strings and toasts carry no patient names, DOBs, phone numbers, note text or clinical values.
 - For any change touching personal data, auth, storage, logging, analytics or external calls, recommend running the repo's **`ekko-compliance`** skill, and report its result.
 
+## Test accounts
+- Logged-in testing uses dedicated QA accounts, **read only from environment variables**:
+  - `EKKO_TEST_ORGADMIN_EMAIL`: org admin role
+  - `EKKO_TEST_DOCTOR_EMAIL`: doctor role
+  - `EKKO_TEST_PASSWORD`: shared password for those accounts
+- If a variable is unset, report the login-dependent scenarios as **blocked**. Never guess, reuse credentials found elsewhere, or ask for them in chat.
+- **Never write credentials into code, tests, fixtures, scripts, commits, logs, screenshots or reports.** Refer to them only by variable name. Mask password fields in any captured evidence.
+- Use these accounts only against dev and QA environments, never production. Create only synthetic patients and data, and clean up what you create where the app allows it.
+
 ## Don't edit (vendored or synced)
 - `.ai/` is synced from ai-hub and overwritten wholesale.
 - `src/ekko-ds/` is the vendored ekko-ds copy (`sync-design-system` skill). It is read-only, and `dev`'s copy wins.
