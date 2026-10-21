@@ -102,6 +102,13 @@ No secrets, credentials or PHI here, ever.
 - [ ] Merge `ekko-web-app` PR #77 (and `jasatekkomd/Hawk` PR #1).
 - [ ] Jasper to rotate the QA account password (it was shared in chat on 2026-10-21) and store the new one only in the Hawk environment.
 - [ ] Rotate the credentials committed in `ekko-test-automation`.
+- [ ] **Parked for later (Jasper, 2026-10-21):** confirm with design (Anbuu) the ekko-ds treatment and copy for the 5
+  Patients failure states the design specs list as undrawn, then update the test suite (PAT-UX-028):
+  1. Validation failure in Patient Info (patient-info design-spec, "A validation failure")
+  2. Failed save in Patient Info ("A save that fails")
+  3. Failed roster load (patients-roster design-spec)
+  4. Empty Documents tab (patient-documents design-spec, "A patient with no documents")
+  5. A file that won't open (patient-documents design-spec, "A file that will not open")
 - [x] Record the V2 dev app URL (app-dev2, 2026-10-21).
 - [ ] Fix secret `DEV_V2_VITE_CORE_SERVICE_URL` for `app-dev-v2` (or retire that site).
 - [ ] Get a doctor-only account on `api-dev`: there, the "doctor" test account also has Org Admin, so it lands on `/settings`.
