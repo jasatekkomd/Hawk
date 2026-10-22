@@ -105,6 +105,11 @@ No secrets, credentials or PHI here, ever.
 
 ### Onboarding (2026-10-22, Jira V2-24)
 - Filed V2-64 (Bug, Medium, labels Medium+Patients, assignee Ian Calvin Jacob): Patients "+" opens the visit flow.
+  Every ticket Hawk files starts with an info panel: "Reported by Hawk QA, Jasper P's AI testing agent (built on
+  Claude Code) ... filed on Jasper's behalf. Questions go to Jasper P." (Jasper, 2026-10-22).
+  Edit descriptions that hold images as ADF (keep the media ids) or the images break; markdown edits are unsafe there.
+  2026-10-22: scribeai-2024.atlassian.net is allowed in the Hawk env network; JIRA_API_TOKEN was NOT visible even in a
+  fresh session, so check how it was saved before relying on REST uploads.
   The Atlassian connector cannot upload attachments; screenshots must be attached by hand in Jira.
   Ian's account id: 712020:21f98651-e8e9-4500-838e-0ec097ca9278. Ticket style follows V2-24 (labels = priority + area).
 - Jira: site scribeai-2024.atlassian.net, project V2 (V2 bugs, Ian Calvin Jacob assignee on V2-24).
