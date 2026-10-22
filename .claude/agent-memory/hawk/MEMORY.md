@@ -175,7 +175,6 @@ No secrets, credentials or PHI here, ever.
   3. Failed roster load (patients-roster design-spec)
   4. Empty Documents tab (patient-documents design-spec, "A patient with no documents")
   5. A file that won't open (patient-documents design-spec, "A file that will not open")
-- [x] Record the V2 dev app URL (app-dev2, 2026-10-21).
 - [ ] Fix secret `DEV_V2_VITE_CORE_SERVICE_URL` for `app-dev-v2` (or retire that site).
 - [ ] Get a doctor-only account on `api-dev`: there, the "doctor" test account also has Org Admin, so it lands on `/settings`.
 - [ ] First baseline pass on `dev`: full suite, contract gate, build/lint; list failures and untested risk areas.
