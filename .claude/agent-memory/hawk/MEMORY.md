@@ -131,7 +131,7 @@ No secrets, credentials or PHI here, ever.
 - 2026-10-22 08:35 UTC deploy broke app-dev2: VITE_CORE_SERVICE_URL now has https://, env.ts:34 prepends another, every
   API call -> https://https//api-dev2 ("Unable to open your workspace"). Jasper chose not to file; check it's fixed first.
 - Design oracle for Patients: modules-proto/dashboard/patients/*/images/*.png are 2880x1800 renders of each state; compare
-  side by side with app 1440 shots (crop design at 2x). Patients design diff done 22 Oct (header, flags, docs grid, BP split).
+  side by side with app 1440 shots (crop design at 2x). Patients design diff filed as V2-109 (7 sheets attached).
 - Test data in TEST10 (22 Oct): KVFU-00000T..Z (Sprobe, Sdouble x2, Sdup x2, Bartholomew long name, Stitle) + 2 PNG docs on Sprobe, 2 visits + vitals
   on Visitcheck, allergy on Sprobe. Vitals: fill inputs by aria-label (index fill hits HBA1C).
 - 22 Oct ~06:53 UTC: new app-dev2 build (Ian, likely e6a4ab1, new login-return page). Auth0 now via custom domain
