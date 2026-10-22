@@ -190,7 +190,6 @@ No secrets, credentials or PHI here, ever.
   chosen 2026-09-08), but the app renders it at **26px**; ekko-ds `.set-head h1` specifies **22px / 26px line-height**. Status: reported, not filed.
 - 2026-10-21 · Question (dev code) · `role-home.ts` sends any user with org_admin to `/settings`, so a doctor+admin
   never lands on Visits; its own comment suggests the opposite.
-- Breakpoint note: two-pane Visits switches at 1280 (Tailwind `xl`, per the feature spec), not ekko-ds's 1024.
 
 ## Log
 - 2026-10-21: Hawk created, tuned to V2 and ekko-ds, memory seeded. No tests run yet.
