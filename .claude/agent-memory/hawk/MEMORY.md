@@ -73,6 +73,10 @@ No secrets, credentials or PHI here, ever.
   read acceptance criteria via `plans/patient-management/*` and `DEBT.md`.
 - Backend `ekko-coreService-nodejs` `main` has NO `/v2/*` routes; the app's /v2/patients calls come from an
   unmerged backend branch (#1545 lineage). Backend rules from `main` (/patients) are second-hand for api-dev2.
+- CONFIRMED live 2026-10-22: roster "+" (aria "New patient") navigates to `/visits/new?newPatient=1&from=/patients`;
+  rail switches to Visits; after "Create patient" (201) the drawer becomes "New visit" with the patient bound; Esc
+  didn't close it. Design (IS §12, roster spec) expects a standalone Create New Patient drawer that toasts
+  "Patient created ✓" and closes. Drawer header back/close icons render as blank squares.
 - Create patient lives in the New visit drawer (`/visits/new?newPatient=1`); ekko-ds NewPatientDrawer/ABHA not wired.
 - Edit = PATCH `/v2/patients/:id/profile` with `revision` (409 on conflict), though DEBT.md says read-only. Asked Jasper.
 - Suspected gaps to verify first: no duplicate-patient check; title never sent; card Cancel and create-drawer scrim
