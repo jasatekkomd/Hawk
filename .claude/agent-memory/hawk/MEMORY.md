@@ -27,7 +27,7 @@ No secrets, credentials or PHI here, ever.
   - In the Default environment (2026-10-21), `auth-dev`, `api-dev` and `app-qa.ekkomd.com` were all unreachable
     until the domains were allowed. Re-check reachability before reporting environment blockers.
 - **Live V2 dev app (current): `https://app-dev2.ekkomd.com`** (confirmed by Jasper, 2026-10-21).
-  - API `api-dev2.ekkomd.com`; Auth0 tenant `dev-iqxyolpw0karbhgx.us.auth0.com`; audience `https://api-dev2.ekkomd.com`
+  - API `api-dev2.ekkomd.com`; Auth0 tenant `dev-iqxyolpw0karbhgx` (login page on custom domain `auth-dev.ekkomd.com` since 22 Oct); audience `https://api-dev2.ekkomd.com`
     (real access tokens, so the v1 token bug is fixed here).
   - Built from **`ekko-web-app` branch `codex/v2-23-mobile-validation`** (author Iancalvinj), NOT `dev`. Matched by
     `/v2/visits/search`, `/v2/settings/*`, "Pending intake", the Seats copy and Libre Baskerville, none of which exist on `dev`.
@@ -110,19 +110,22 @@ No secrets, credentials or PHI here, ever.
   Edit descriptions that hold images as ADF (keep the media ids) or the images break; markdown edits are unsafe there.
   Bulk bugs with screenshots: `python3 tools/jira_bug.py bugs.json` (create + attach, attribution panel added),
   `--attach KEY files...`, `--check`. Needs env JIRA_API_TOKEN (JIRA_EMAIL defaults to jasper.p@ekkomd.com).
-  2026-10-22: JIRA_API_TOKEN works in new Hawk sessions (/myself 200 as Jasper P). Sessions started before it was
-  saved can't see it; spawn or open a new Hawk session to file bugs with attachments.
-  2026-10-22 (session 012DAcj): --check 200; V2 CREATE_ISSUES and CREATE_ATTACHMENTS both granted.
-  2026-10-22: B01 (logout) was already V2-37 (Vignesh, Medium, no evidence). Jasper chose: add Hawk evidence as a
-  comment + attachments on the existing ticket, recommend priority in text, don't change fields. Done: 10/10 repro,
-  /v2/logout aborted ~10ms by /authorize, 3 masked screenshots + network log attached via API (works).
-  Before filing any Run 1 bug, JQL-search V2 for a duplicate first. Mask emails with Playwright screenshot `mask`.
-  2026-10-22: S2 bugs filed (Bug, High, labels High+Patients, Ian): B02 V2-65, B03 V2-66, B04 V2-67, B05 V2-68,
-  B06 V2-69, B07 V2-70, B08 V2-71, B09 V2-72, B10 V2-73 (links 70-71, 66-72). Mapping used: S2 -> High.
-  B06 worse live: same-day vitals mix visits (150/80); measurement_time is date-only. B10 root cause is ekko-ds CSS
-  `.pi-flag-x {display:none}` (patient-info.css:420): ekko-ds issue proposal still to raise.
-  Test data added 22 Oct: patients KVFU-00000T..X (Sprobe, Sdouble x2, Sdup x2), 2 visits + vitals on Visitcheck,
-  allergy on Sprobe. Vitals: label inputs by aria-label (index fill hits HBA1C); visit page can hang on 'Loading visit'.
+  JIRA_API_TOKEN works in Hawk sessions started after it was saved (/myself 200; CREATE_ISSUES+ATTACHMENTS granted).
+  Jira link API: {type:Blocks, inwardIssue:A, outwardIssue:B} means A blocks B.
+  Before filing, JQL-search V2 for duplicates AND check ekko-ds/spec/DEBT: design-defined or undrawn behaviour is not an app bug.
+  Mask emails with Playwright screenshot `mask`. Severity map: S1 Highest, S2 High, S3 Medium (labels = priority + Patients).
+### Patients Run 1 filing (2026-10-22)
+- B01 = existing V2-37 (Hawk comment + 10/10 repro evidence added). S2: B02 V2-65, B03 V2-66, B04 V2-67, B05 V2-68,
+  B06 V2-69, B07 V2-70, B08 V2-71, B09 V2-72, B10 V2-73. S3: B11 V2-74, B12 V2-75, B13 V2-76, B15 V2-77 (blocked by
+  V2-65), B16 V2-78, B19 V2-79 (rel V2-43), B20 V2-80, B22 V2-81, B23 V2-82, B24 V2-83, B25 V2-84, B29 V2-85, B31 V2-86, B32 V2-87.
+- S3 not filed: B18/B30/B34 not reproduced on 22 Oct build; B14 undrawn in design (parked item); B21 matches ekko-ds
+  PatientRow (name over id); B33 is spec (global-search-compliance-fixes Fix B); B17 blocked (no account without patient access).
+- ekko-ds proposals still to raise: B10 `.pi-flag-x {display:none}` blocks keyboard; B26 contrast (--gray-400 stat label
+  2.43:1, primary button 4.43:1 at 12px). S4 (B35-B43) not filed yet.
+- Test data in TEST10 (22 Oct): KVFU-00000T..Y (Sprobe, Sdouble x2, Sdup x2, Bartholomew long name), 2 visits + vitals
+  on Visitcheck, allergy on Sprobe. Vitals: fill inputs by aria-label (index fill hits HBA1C).
+- 22 Oct ~06:53 UTC: new app-dev2 build (Ian, likely e6a4ab1, new login-return page). Auth0 now via custom domain
+  auth-dev.ekkomd.com; ~30 min outage before that (ACUL needs custom domain). Login helper must not wait for *.auth0.com.
   The Atlassian connector cannot upload attachments; screenshots must be attached by hand in Jira.
   Ian's account id: 712020:21f98651-e8e9-4500-838e-0ec097ca9278. Ticket style follows V2-24 (labels = priority + area).
 - Jira: site scribeai-2024.atlassian.net, project V2 (V2 bugs, Ian Calvin Jacob assignee on V2-24).
