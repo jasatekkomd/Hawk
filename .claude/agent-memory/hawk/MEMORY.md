@@ -120,9 +120,13 @@ No secrets, credentials or PHI here, ever.
   V2-65), B16 V2-78, B19 V2-79 (rel V2-43), B20 V2-80, B22 V2-81, B23 V2-82, B24 V2-83, B25 V2-84, B29 V2-85, B31 V2-86, B32 V2-87.
 - S3 not filed: B18/B30/B34 not reproduced on 22 Oct build; B14 undrawn in design (parked item); B21 matches ekko-ds
   PatientRow (name over id); B33 is spec (global-search-compliance-fixes Fix B); B17 blocked (no account without patient access).
-- ekko-ds proposals still to raise: B10 `.pi-flag-x {display:none}` blocks keyboard; B26 contrast (--gray-400 stat label
-  2.43:1, primary button 4.43:1 at 12px). S4 (B35-B43) not filed yet.
-- Test data in TEST10 (22 Oct): KVFU-00000T..Y (Sprobe, Sdouble x2, Sdup x2, Bartholomew long name), 2 visits + vitals
+- S4 (Low): B35 V2-91, B36 V2-92, B37 V2-93, B39 V2-94. Not reproduced: B41 (rail ring now shows), B42. B40 tablet-only,
+  B43 spec question (unfiled). B38 copy breaks live in ekko-ds (and src/design-adapters copies them): goes to ds proposal.
+- ekko-ds proposals still to raise: B10 `.pi-flag-x {display:none}`; B26 contrast (--gray-400 stat label 2.43:1, primary
+  button 4.43:1 at 12px); B38 copy (UploadDocumentsDialog em dash, "Search documents..", "Visit Date" on patient docs,
+  "No X-ray on file for this visit" on patient page, title case "Upload Files"/"Total Visits").
+- src/design-adapters/ = Ian's app-owned copies of ekko-ds components (not vendored); fixes there are app work.
+- Test data in TEST10 (22 Oct): KVFU-00000T..Z (Sprobe, Sdouble x2, Sdup x2, Bartholomew long name, Stitle) + 2 PNG docs on Sprobe, 2 visits + vitals
   on Visitcheck, allergy on Sprobe. Vitals: fill inputs by aria-label (index fill hits HBA1C).
 - 22 Oct ~06:53 UTC: new app-dev2 build (Ian, likely e6a4ab1, new login-return page). Auth0 now via custom domain
   auth-dev.ekkomd.com; ~30 min outage before that (ACUL needs custom domain). Login helper must not wait for *.auth0.com.
