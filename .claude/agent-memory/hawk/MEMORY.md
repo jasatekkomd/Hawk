@@ -99,6 +99,15 @@ No secrets, credentials or PHI here, ever.
 - New component tests (111, 21 failing on real bugs) kept outside the repo: scratchpad run1/hawk-tests/__hawk__/.
   Never push them to codex/v2-23-mobile-validation (Ian's branch); ask before any team branch.
 
+### Onboarding (2026-10-22, Jira V2-24)
+- Jira: site scribeai-2024.atlassian.net, project V2 (V2 bugs, Ian Calvin Jacob assignee on V2-24).
+- V2-24: create-account shows only "Fill in all required fields above." (`create-account-page.tsx:171`); `ObField` has an
+  `error` prop but only the phone field gets one. Same pattern in setup-workspace ("Fill in workspace name and specialty.").
+- Design oracle (`modules-proto/onboarding/onboarding.html` OB._checks/_setError/_announce): per-field messages
+  ("Enter your first name", "Enter your last name", "Enter a valid phone number", "Choose your role",
+  "Enter your registration number"), red box + aria-invalid + aria-describedby, Continue stays enabled and refuses,
+  first invalid field focused, live region "N fields need attention before you can continue", all fields re-check on input.
+
 ## Design-system notes
 - ekko-ds rules: tokens only; control heights 24/30/36/44; even spacing; fixed status tone map;
   no dashes and no "SOAP" in UI copy; no native `<select>`, `type="date"` or `title` tooltips.
