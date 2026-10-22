@@ -42,7 +42,8 @@ No secrets, credentials or PHI here, ever.
 - Local: `npm run dev` serves on port 5173 (strictPort). `.env.example` lists the `VITE_*` vars.
 - ekko-design-system is NOT attached by default. In a cloud session, attach it read-only (`add_repo`
   Aidocscribe/ekko-design-system, read) and clone shallow to `/home/user/ekko-design-system`. Push is refused (read-only by design).
-  Checked at `fccc0fb` (2026-10-20).
+  Newest design is branch `anbu` (65a421b, 22 Oct), ahead of main (fccc0fb). Letterhead: landing = settings/workspace/admin/
+  workspace-letterhead (10 states, images/); editor only in proto-by-roles/dashboard-master.html [Module/letterhead].
 - Network: `i.ibb.co` (Auth0 login logo) is blocked in the Hawk environment. Harmless; not an app bug.
 - Browser automation: use the globally installed Playwright (`npm root -g`), not a fresh `npm i playwright`
   (its browser version won't match `/opt/pw-browsers`). Keep scripts in scratch, outside every repo.
@@ -129,7 +130,7 @@ No secrets, credentials or PHI here, ever.
   behind RequireLegalAcceptance. Repro'd by backend unit test (mocked Prisma). Live repro needs an invite inbox Hawk lacks.
   Backend unit tests: ts-jest OOMs on full typecheck; use a scratch jest config with isolatedModules + diagnostics off.
 - 2026-10-22 08:35 UTC deploy broke app-dev2: VITE_CORE_SERVICE_URL now has https://, env.ts:34 prepends another, every
-  API call -> https://https//api-dev2 ("Unable to open your workspace"). Jasper chose not to file; check it's fixed first.
+  API call -> https://https//api-dev2 ("Unable to open your workspace"). Fixed by the 09:04 UTC redeploy (login works).
 - Design oracle for Patients: modules-proto/dashboard/patients/*/images/*.png are 2880x1800 renders of each state; compare
   side by side with app 1440 shots (crop design at 2x). Patients design diff filed as V2-109 (7 sheets attached).
 - Test data in TEST10 (22 Oct): KVFU-00000T..Z (Sprobe, Sdouble x2, Sdup x2, Bartholomew long name, Stitle) + 2 PNG docs on Sprobe, 2 visits + vitals
