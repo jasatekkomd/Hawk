@@ -112,6 +112,7 @@ No secrets, credentials or PHI here, ever.
   `--attach KEY files...`, `--check`. Needs env JIRA_API_TOKEN (JIRA_EMAIL defaults to jasper.p@ekkomd.com).
   2026-10-22: JIRA_API_TOKEN works in new Hawk sessions (/myself 200 as Jasper P). Sessions started before it was
   saved can't see it; spawn or open a new Hawk session to file bugs with attachments.
+  2026-10-22 (session 012DAcj): --check 200; V2 CREATE_ISSUES and CREATE_ATTACHMENTS both granted.
   The Atlassian connector cannot upload attachments; screenshots must be attached by hand in Jira.
   Ian's account id: 712020:21f98651-e8e9-4500-838e-0ec097ca9278. Ticket style follows V2-24 (labels = priority + area).
 - Jira: site scribeai-2024.atlassian.net, project V2 (V2 bugs, Ian Calvin Jacob assignee on V2-24).
