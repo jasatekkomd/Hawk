@@ -141,6 +141,7 @@ No secrets, credentials or PHI here, ever.
 - [ ] Merge `ekko-web-app` PR #77 (and `jasatekkomd/Hawk` PR #1).
 - [ ] Jasper to rotate the QA account password (it was shared in chat on 2026-10-21) and store the new one only in the Hawk environment.
 - [ ] Rotate the credentials committed in `ekko-test-automation`.
+- [ ] Jasper to revoke the Jira API token pasted in chat on 2026-10-22 and add a new one only as JIRA_API_TOKEN in the Hawk env.
 - [ ] **Parked for later (Jasper, 2026-10-21):** confirm with design (Anbuu) the ekko-ds treatment and copy for the 5
   Patients failure states the design specs list as undrawn, then update the test suite (PAT-UX-028):
   1. Validation failure in Patient Info (patient-info design-spec, "A validation failure")
