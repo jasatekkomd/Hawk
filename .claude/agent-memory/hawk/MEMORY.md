@@ -117,6 +117,12 @@ No secrets, credentials or PHI here, ever.
   comment + attachments on the existing ticket, recommend priority in text, don't change fields. Done: 10/10 repro,
   /v2/logout aborted ~10ms by /authorize, 3 masked screenshots + network log attached via API (works).
   Before filing any Run 1 bug, JQL-search V2 for a duplicate first. Mask emails with Playwright screenshot `mask`.
+  2026-10-22: S2 bugs filed (Bug, High, labels High+Patients, Ian): B02 V2-65, B03 V2-66, B04 V2-67, B05 V2-68,
+  B06 V2-69, B07 V2-70, B08 V2-71, B09 V2-72, B10 V2-73 (links 70-71, 66-72). Mapping used: S2 -> High.
+  B06 worse live: same-day vitals mix visits (150/80); measurement_time is date-only. B10 root cause is ekko-ds CSS
+  `.pi-flag-x {display:none}` (patient-info.css:420): ekko-ds issue proposal still to raise.
+  Test data added 22 Oct: patients KVFU-00000T..X (Sprobe, Sdouble x2, Sdup x2), 2 visits + vitals on Visitcheck,
+  allergy on Sprobe. Vitals: label inputs by aria-label (index fill hits HBA1C); visit page can hang on 'Loading visit'.
   The Atlassian connector cannot upload attachments; screenshots must be attached by hand in Jira.
   Ian's account id: 712020:21f98651-e8e9-4500-838e-0ec097ca9278. Ticket style follows V2-24 (labels = priority + area).
 - Jira: site scribeai-2024.atlassian.net, project V2 (V2 bugs, Ian Calvin Jacob assignee on V2-24).
