@@ -110,7 +110,8 @@ No secrets, credentials or PHI here, ever.
   Edit descriptions that hold images as ADF (keep the media ids) or the images break; markdown edits are unsafe there.
   Bulk bugs with screenshots: `python3 tools/jira_bug.py bugs.json` (create + attach, attribution panel added),
   `--attach KEY files...`, `--check`. Needs env JIRA_API_TOKEN (JIRA_EMAIL defaults to jasper.p@ekkomd.com).
-  2026-10-22: Jira host allowed in Hawk network; JIRA_API_TOKEN still absent in fresh sessions (not saved yet).
+  2026-10-22: JIRA_API_TOKEN works in new Hawk sessions (/myself 200 as Jasper P). Sessions started before it was
+  saved can't see it; spawn or open a new Hawk session to file bugs with attachments.
   The Atlassian connector cannot upload attachments; screenshots must be attached by hand in Jira.
   Ian's account id: 712020:21f98651-e8e9-4500-838e-0ec097ca9278. Ticket style follows V2-24 (labels = priority + area).
 - Jira: site scribeai-2024.atlassian.net, project V2 (V2 bugs, Ian Calvin Jacob assignee on V2-24).
