@@ -82,6 +82,23 @@ No secrets, credentials or PHI here, ever.
 - Older backend (main) suspects: `?current_user_id=` impersonation, gender missing → 500, unvalidated sort_by → 500,
   unbounded limit, stack traces in error bodies, no audit except patient view, mime type trusted, no virus scan.
 
+### Run 1 (2026-10-21, build 2c09e2a, TEST10): 126 pass, 61 fail, 18 blocked, 13 not run of 218
+- Results tab "Run 1 results" in the suite doc (43 bugs B01-B43 with a Status dropdown). Raw: scratchpad run1/merged.json.
+- Top bugs: B01 S1 logout aborted 6/10, app silently signs back in; B02 S2 /v2/patients/search returns no
+  hasMore/nextCursor (roster stuck at 20, documents at 24); B03 S2 api-dev2 error bodies carry stack traces and
+  `toApiError` shows `body.error` when `message` is an array; B04 S2 visit-preview + consent caches survive patient
+  switch; B05 S2 vital chips use input limits not clinical ranges; B06 S2 same-date vitals out of order;
+  B07 S2 double-submit creates two patients; B08 no duplicate check; B09 app 25 MB vs server 10 MB upload cap.
+- Gates on 2c09e2a: 2019 tests pass, contract 26/26 (pinned to backend codex/v2-23-mobile-validation @ d4196c8f;
+  checks requests only), build and lint pass. setup.ts fails tests on unhandled requests (afterEach), not pure bypass.
+- Test data left in TEST10: 27 synthetic "Hawkqa" patients (ids in scratchpad run1/B/created.json, run1/C/created.json).
+  App has no patient delete; the API delete needs patient.delete (org admin has it, doctor doesn't).
+- Doctor account: patient.read but no patient.delete/restore, calendar.schedule=false; org admin lacks allergy.write.
+- Workspace choice isn't stored in Playwright storage state; scripts must pick TEST10 after login.
+- 12 security-probe cases need Jasper's explicit sign-off before running against api-dev2.
+- New component tests (111, 21 failing on real bugs) kept outside the repo: scratchpad run1/hawk-tests/__hawk__/.
+  Never push them to codex/v2-23-mobile-validation (Ian's branch); ask before any team branch.
+
 ## Design-system notes
 - ekko-ds rules: tokens only; control heights 24/30/36/44; even spacing; fixed status tone map;
   no dashes and no "SOAP" in UI copy; no native `<select>`, `type="date"` or `title` tooltips.
@@ -133,3 +150,4 @@ No secrets, credentials or PHI here, ever.
   V2 dev site, traced it to `codex/v2-23-mobile-validation`, tested login for both roles, logged 2 bugs + 2 questions.
 - 2026-10-21: Jasper asked for memory to be saved automatically, without asking. See "Memory" in hawk.md.
 - 2026-10-21: Wrote the Patients module test suite (218 cases after adding ekko-ds feedback cases) as a Claude Doc; findings above.
+- 2026-10-21: Run 1 of the Patients suite executed (see Run 1 above).
