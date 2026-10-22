@@ -24,8 +24,6 @@ No secrets, credentials or PHI here, ever.
   - Network access: Limited, allowing `*.ekkomd.com` and `*.auth0.com`, plus package managers.
   - Env vars: `EKKO_TEST_ORGADMIN_EMAIL` (org admin), `EKKO_TEST_DOCTOR_EMAIL` (doctor), `EKKO_TEST_PASSWORD`.
     If any is unset, mark login-dependent tests as blocked.
-  - In the Default environment (2026-10-21), `auth-dev`, `api-dev` and `app-qa.ekkomd.com` were all unreachable
-    until the domains were allowed. Re-check reachability before reporting environment blockers.
 - **Live V2 dev app (current): `https://app-dev2.ekkomd.com`** (confirmed by Jasper, 2026-10-21).
   - API `api-dev2.ekkomd.com`; Auth0 tenant `dev-iqxyolpw0karbhgx` (login page on custom domain `auth-dev.ekkomd.com` since 22 Oct); audience `https://api-dev2.ekkomd.com`
     (real access tokens, so the v1 token bug is fixed here).
@@ -130,6 +128,10 @@ No secrets, credentials or PHI here, ever.
   membership (legal-documents.repository.ts:132) but invitees are PENDING until invites/:id/accept; app gates invite pages
   behind RequireLegalAcceptance. Repro'd by backend unit test (mocked Prisma). Live repro needs an invite inbox Hawk lacks.
   Backend unit tests: ts-jest OOMs on full typecheck; use a scratch jest config with isolatedModules + diagnostics off.
+- 2026-10-22 08:35 UTC deploy broke app-dev2: VITE_CORE_SERVICE_URL now has https://, env.ts:34 prepends another, every
+  API call -> https://https//api-dev2 ("Unable to open your workspace"). Jasper chose not to file; check it's fixed first.
+- Design oracle for Patients: modules-proto/dashboard/patients/*/images/*.png are 2880x1800 renders of each state; compare
+  side by side with app 1440 shots (crop design at 2x). Patients design diff done 22 Oct (header, flags, docs grid, BP split).
 - Test data in TEST10 (22 Oct): KVFU-00000T..Z (Sprobe, Sdouble x2, Sdup x2, Bartholomew long name, Stitle) + 2 PNG docs on Sprobe, 2 visits + vitals
   on Visitcheck, allergy on Sprobe. Vitals: fill inputs by aria-label (index fill hits HBA1C).
 - 22 Oct ~06:53 UTC: new app-dev2 build (Ian, likely e6a4ab1, new login-return page). Auth0 now via custom domain
@@ -187,7 +189,6 @@ No secrets, credentials or PHI here, ever.
   chosen 2026-09-08), but the app renders it at **26px**; ekko-ds `.set-head h1` specifies **22px / 26px line-height**. Status: reported, not filed.
 - 2026-10-21 · Question (dev code) · `role-home.ts` sends any user with org_admin to `/settings`, so a doctor+admin
   never lands on Visits; its own comment suggests the opposite.
-- 2026-10-21 · Lead (dev, local) · Visits list looked empty after resizing across 1280 without reload; fine after reload. Unconfirmed.
 - Breakpoint note: two-pane Visits switches at 1280 (Tailwind `xl`, per the feature spec), not ekko-ds's 1024.
 
 ## Log
