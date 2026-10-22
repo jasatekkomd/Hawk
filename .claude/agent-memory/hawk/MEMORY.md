@@ -104,6 +104,9 @@ No secrets, credentials or PHI here, ever.
   Never push them to codex/v2-23-mobile-validation (Ian's branch); ask before any team branch.
 
 ### Onboarding (2026-10-22, Jira V2-24)
+- Filed V2-64 (Bug, Medium, labels Medium+Patients, assignee Ian Calvin Jacob): Patients "+" opens the visit flow.
+  The Atlassian connector cannot upload attachments; screenshots must be attached by hand in Jira.
+  Ian's account id: 712020:21f98651-e8e9-4500-838e-0ec097ca9278. Ticket style follows V2-24 (labels = priority + area).
 - Jira: site scribeai-2024.atlassian.net, project V2 (V2 bugs, Ian Calvin Jacob assignee on V2-24).
 - V2-24: create-account shows only "Fill in all required fields above." (`create-account-page.tsx:171`); `ObField` has an
   `error` prop but only the phone field gets one. Same pattern in setup-workspace ("Fill in workspace name and specialty.").
