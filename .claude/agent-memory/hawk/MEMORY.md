@@ -44,7 +44,7 @@ No secrets, credentials or PHI here, ever.
   Aidocscribe/ekko-design-system, read) and clone shallow to `/home/user/ekko-design-system`. Push is refused (read-only by design).
   Newest design is branch `anbu` (65a421b, 22 Oct), ahead of main (fccc0fb). Letterhead: landing = settings/workspace/admin/
   workspace-letterhead (10 states, images/); editor only in proto-by-roles/dashboard-master.html [Module/letterhead].
-- Letterhead tested 22 Oct (org admin, not saved): one letterhead per workspace is per spec (report-template). Build with AI 503s
+- Letterhead tested 22 Oct (org admin, not saved): app HAS a library (multi layouts, default, duplicate, delete; no rename). AI 503s
   on every image, PDFs refused client-side; V2-63 font size still broken; native selects/color in inspector; preview empty.
   Saved-letterhead states untested (saving changes TEST10's letterhead; ask Jasper). Not filed yet.
 - Network: `i.ibb.co` (Auth0 login logo) is blocked in the Hawk environment. Harmless; not an app bug.
