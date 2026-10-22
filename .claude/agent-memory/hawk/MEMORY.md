@@ -126,6 +126,10 @@ No secrets, credentials or PHI here, ever.
   button 4.43:1 at 12px); B38 copy (UploadDocumentsDialog em dash, "Search documents..", "Visit Date" on patient docs,
   "No X-ray on file for this visit" on patient page, title case "Upload Files"/"Total Visits").
 - src/design-adapters/ = Ian's app-owned copies of ekko-ds components (not vendored); fixes there are app work.
+- 2026-10-22 V2-99 (Highest, Onboarding): new invitees 500 on legal "Accept and continue". Backend 482d9e10 requires ACTIVE
+  membership (legal-documents.repository.ts:132) but invitees are PENDING until invites/:id/accept; app gates invite pages
+  behind RequireLegalAcceptance. Repro'd by backend unit test (mocked Prisma). Live repro needs an invite inbox Hawk lacks.
+  Backend unit tests: ts-jest OOMs on full typecheck; use a scratch jest config with isolatedModules + diagnostics off.
 - Test data in TEST10 (22 Oct): KVFU-00000T..Z (Sprobe, Sdouble x2, Sdup x2, Bartholomew long name, Stitle) + 2 PNG docs on Sprobe, 2 visits + vitals
   on Visitcheck, allergy on Sprobe. Vitals: fill inputs by aria-label (index fill hits HBA1C).
 - 22 Oct ~06:53 UTC: new app-dev2 build (Ian, likely e6a4ab1, new login-return page). Auth0 now via custom domain
