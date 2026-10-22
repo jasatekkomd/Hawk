@@ -46,7 +46,8 @@ No secrets, credentials or PHI here, ever.
   workspace-letterhead (10 states, images/); editor only in proto-by-roles/dashboard-master.html [Module/letterhead].
 - Letterhead tested 22 Oct (org admin, not saved): app HAS a library (multi layouts, default, duplicate, delete; no rename). AI 503s
   on every image, PDFs refused client-side; V2-63 font size still broken; native selects/color in inspector; preview empty.
-  Saved-letterhead states untested (saving changes TEST10's letterhead; ask Jasper). Not filed yet.
+  Classic flow tested 22 Oct with Jasper's OK: save/edit/duplicate/default/delete work; A4>A5>A4 corrupts layout; arrow nudge
+  dead; delete toasts "saved"; clinic details persist after deleting all (cleared). TEST10 restored. Not filed yet.
 - Network: `i.ibb.co` (Auth0 login logo) is blocked in the Hawk environment. Harmless; not an app bug.
 - Browser automation: use the globally installed Playwright (`npm root -g`), not a fresh `npm i playwright`
   (its browser version won't match `/opt/pw-browsers`). Keep scripts in scratch, outside every repo.
