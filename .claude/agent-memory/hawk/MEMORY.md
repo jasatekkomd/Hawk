@@ -42,12 +42,13 @@ No secrets, credentials or PHI here, ever.
   Aidocscribe/ekko-design-system, read) and clone shallow to `/home/user/ekko-design-system`. Push is refused (read-only by design).
   Newest design is branch `anbu` (65a421b, 22 Oct), ahead of main (fccc0fb). Letterhead: landing = settings/workspace/admin/
   workspace-letterhead (10 states, images/); editor only in proto-by-roles/dashboard-master.html [Module/letterhead].
-- Letterhead Run 1 (23 Oct, 4efd05c, TEST10): suite doc https://claude.ai/artifact/Ct2zEvaj67pKGVgoDmxLFo (137 cases,
-  results + bugs L01-L18 in "Run 1 results"): 77 pass, 33 fail, 6 partial, 10 blocked. S2: A4>A5>A4 corrupts layout; AI
-  rebuild 503 / all PDFs refused; Preview empty; offline Save hangs; dark theme unreadable. Library limit 20; 61st block
-  silently dropped. Not filed in Jira yet. TEST10 KEEPS "Hawkqa Classic test" (default) + copy and team "Hawkqa team"
-  (Jasper, 22 Oct: never delete test data unless he asks). Rebuild throttles (429) after ~6 calls. All 9 templates tested
-  (Run 1b): A4>A5>A4 breaks every one; Split Header/Side Logo/Triple Logo/Dual Flanked seeds differ from design.
+- Letterhead (23 Oct, 4efd05c, TEST10): suite doc https://claude.ai/artifact/Ct2zEvaj67pKGVgoDmxLFo holds Run 1 (137
+  cases), Run 1b (9 templates), Run 2 (keystrokes, every control) and real use; bugs L01-L28, none filed yet. TEST10 KEEPS
+  "Hawkqa Classic test" (default) + copy and team "Hawkqa team" (Jasper: never delete test data unless he asks).
+- Letterhead Run 2 + real use (23 Oct): L21 number fields clamp per keystroke (font size 14 saves 48; only Width/Height
+  fixed); export via signed visit works (default, team letterhead both apply). Signed synthetic visit "Hawkqa Visitcheck"
+  by uploading an espeak-ng consult mp3 (apt install espeak-ng; Recording options > Upload recording, ~35 s). QA doctor
+  profile is EMPTY (no name/reg no) so exports print no prescriber (L27). Export vitals duplicated/invented (notes team).
 - Network: `i.ibb.co` (Auth0 login logo) is blocked in the Hawk environment. Harmless; not an app bug.
 - Browser automation: use the globally installed Playwright (`npm root -g`), not a fresh `npm i playwright`
   (its browser version won't match `/opt/pw-browsers`). Keep scripts in scratch, outside every repo.
