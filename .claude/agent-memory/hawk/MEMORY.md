@@ -49,7 +49,6 @@ No secrets, credentials or PHI here, ever.
   fixed); export via signed visit works (default, team letterhead both apply). Signed synthetic visit "Hawkqa Visitcheck"
   by uploading an espeak-ng consult mp3 (apt install espeak-ng; Recording options > Upload recording, ~35 s). QA doctor
   profile is EMPTY (no name/reg no) so exports print no prescriber (L27). Export vitals duplicated/invented (notes team).
-- Network: `i.ibb.co` (Auth0 login logo) is blocked in the Hawk environment. Harmless; not an app bug.
 - Browser automation: use the globally installed Playwright (`npm root -g`), not a fresh `npm i playwright`
   (its browser version won't match `/opt/pw-browsers`). Keep scripts in scratch, outside every repo.
 - Safety: rerouting app traffic or injecting CORS headers in Playwright is blocked as security weakening.
