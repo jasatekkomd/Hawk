@@ -48,7 +48,7 @@ No secrets, credentials or PHI here, ever.
 - Letterhead Run 2 + real use (23 Oct): L21 number fields clamp per keystroke (font size 14 saves 48; only Width/Height
   fixed); export via signed visit works (default, team letterhead both apply). Signed synthetic visit "Hawkqa Visitcheck"
   by uploading an espeak-ng consult mp3 (apt install espeak-ng; Recording options > Upload recording, ~35 s). QA doctor
-  profile is EMPTY (no name/reg no) so exports print no prescriber (L27). Export vitals duplicated/invented (notes team).
+  profile now synthetic (Hawkqa Doctor, HQA-000123, Jasper OK 23 Oct); PDF+Word exports print it. Word ignores section order.
 - Browser automation: use the globally installed Playwright (`npm root -g`), not a fresh `npm i playwright`
   (its browser version won't match `/opt/pw-browsers`). Keep scripts in scratch, outside every repo.
 - Safety: rerouting app traffic or injecting CORS headers in Playwright is blocked as security weakening.
