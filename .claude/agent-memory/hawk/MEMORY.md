@@ -46,7 +46,7 @@ No secrets, credentials or PHI here, ever.
   cases), Run 1b (9 templates), Run 2 (keystrokes, every control) and real use; bugs L01-L30 + N01 FILED as V2-189..V2-218 (23 Oct). TEST10 KEEPS
   "Hawkqa Classic test" (default) + copy and team "Hawkqa team" (Jasper: never delete test data unless he asks).
 - Patient intake Run 1 (23 Oct, app-dev2 = b86f6a3): doc https://claude.ai/artifact/BidxoG1JF95UzKFnQmKfui, 80 cases, bugs
-  I01-I09 (not filed). Public form /intake/KVFU; OTP = real SMS (don't send). TEST10 baseline restored (OTP on, front desk,
+  I01-I09 FILED V2-226..232 (+comments V2-123, V2-124). Public form /intake/KVFU; OTP = real SMS (don't send). TEST10 baseline restored (OTP on, front desk,
   4 required fields, 0 consents). Leave the "Test Yourself" pending submission alone (not Hawk's). V2-225 filed (Load more).
 - Letterhead Run 2 + real use (23 Oct): L21 number fields clamp per keystroke (font size 14 saves 48; only Width/Height
   fixed); export via signed visit works (default, team letterhead both apply). Signed synthetic visit "Hawkqa Visitcheck"
