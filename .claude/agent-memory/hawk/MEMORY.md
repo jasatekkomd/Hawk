@@ -43,7 +43,7 @@ No secrets, credentials or PHI here, ever.
   Newest design is branch `anbu` (65a421b, 22 Oct), ahead of main (fccc0fb). Letterhead: landing = settings/workspace/admin/
   workspace-letterhead (10 states, images/); editor only in proto-by-roles/dashboard-master.html [Module/letterhead].
 - Letterhead (23 Oct, 4efd05c, TEST10): suite doc https://claude.ai/artifact/Ct2zEvaj67pKGVgoDmxLFo holds Run 1 (137
-  cases), Run 1b (9 templates), Run 2 (keystrokes, every control) and real use; bugs L01-L28, none filed yet. TEST10 KEEPS
+  cases), Run 1b (9 templates), Run 2 (keystrokes, every control) and real use; bugs L01-L30 + N01 FILED as V2-189..V2-218 (23 Oct). TEST10 KEEPS
   "Hawkqa Classic test" (default) + copy and team "Hawkqa team" (Jasper: never delete test data unless he asks).
 - Letterhead Run 2 + real use (23 Oct): L21 number fields clamp per keystroke (font size 14 saves 48; only Width/Height
   fixed); export via signed visit works (default, team letterhead both apply). Signed synthetic visit "Hawkqa Visitcheck"
