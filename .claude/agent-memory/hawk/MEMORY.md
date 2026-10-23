@@ -48,7 +48,8 @@ No secrets, credentials or PHI here, ever.
   results + bugs L01-L18 in "Run 1 results"): 77 pass, 33 fail, 6 partial, 10 blocked. S2: A4>A5>A4 corrupts layout; AI
   rebuild 503 / all PDFs refused; Preview empty; offline Save hangs; dark theme unreadable. Library limit 20; 61st block
   silently dropped. Not filed in Jira yet. TEST10 KEEPS "Hawkqa Classic test" (default) + copy and team "Hawkqa team"
-  (Jasper, 22 Oct: never delete test data unless he asks). Rebuild endpoint throttles (429) after ~6 calls.
+  (Jasper, 22 Oct: never delete test data unless he asks). Rebuild throttles (429) after ~6 calls. All 9 templates tested
+  (Run 1b): A4>A5>A4 breaks every one; Split Header/Side Logo/Triple Logo/Dual Flanked seeds differ from design.
 - Network: `i.ibb.co` (Auth0 login logo) is blocked in the Hawk environment. Harmless; not an app bug.
 - Browser automation: use the globally installed Playwright (`npm root -g`), not a fresh `npm i playwright`
   (its browser version won't match `/opt/pw-browsers`). Keep scripts in scratch, outside every repo.
