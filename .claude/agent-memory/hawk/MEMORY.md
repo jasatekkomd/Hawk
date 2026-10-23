@@ -144,7 +144,8 @@ No secrets, credentials or PHI here, ever.
 - 22 Oct ~06:53 UTC: new app-dev2 build (Ian, likely e6a4ab1, new login-return page). Auth0 now via custom domain
   auth-dev.ekkomd.com; ~30 min outage before that (ACUL needs custom domain). Login helper must not wait for *.auth0.com.
   The Atlassian connector cannot upload attachments; screenshots must be attached by hand in Jira.
-  Ian's account id: 712020:21f98651-e8e9-4500-838e-0ec097ca9278. Ticket style follows V2-24 (labels = priority + area).
+  Ian 712020:21f98651-e8e9-4500-838e-0ec097ca9278; Ram (ramavigneshwaran.p) 712020:81f4f6d6-0ae8-4ea0-a304-89ec980f41f0. Labels = priority + area.
+  Jasper's token lacks Modify Reporter: reporter can't be set to others (23 Oct; Sajiv's 6 filed V2-219..224, panel names Ram).
 - Jira: site scribeai-2024.atlassian.net, project V2 (V2 bugs, Ian Calvin Jacob assignee on V2-24).
 - V2-24: create-account shows only "Fill in all required fields above." (`create-account-page.tsx:171`); `ObField` has an
   `error` prop but only the phone field gets one. Same pattern in setup-workspace ("Fill in workspace name and specialty.").
@@ -192,7 +193,6 @@ No secrets, credentials or PHI here, ever.
   never lands on Visits; its own comment suggests the opposite.
 
 ## Log
-- 2026-10-21: Hawk created, tuned to V2 and ekko-ds, memory seeded. No tests run yet.
 - 2026-10-21: Logged in to app-dev-v2 (broken API host) and local dev; captured Visits dashboard. Found app-dev2 is the live
   V2 dev site, traced it to `codex/v2-23-mobile-validation`, tested login for both roles, logged 2 bugs + 2 questions.
 - 2026-10-21: Jasper asked for memory to be saved automatically, without asking. See "Memory" in hawk.md.
