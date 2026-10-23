@@ -44,11 +44,11 @@ No secrets, credentials or PHI here, ever.
   Aidocscribe/ekko-design-system, read) and clone shallow to `/home/user/ekko-design-system`. Push is refused (read-only by design).
   Newest design is branch `anbu` (65a421b, 22 Oct), ahead of main (fccc0fb). Letterhead: landing = settings/workspace/admin/
   workspace-letterhead (10 states, images/); editor only in proto-by-roles/dashboard-master.html [Module/letterhead].
-- Letterhead tested 22 Oct (org admin, not saved): app HAS a library (multi layouts, default, duplicate, delete; no rename). AI 503s
-  on every image, PDFs refused client-side; V2-63 font size still broken; native selects/color in inspector; preview empty.
-  Classic flow tested 22 Oct with Jasper's OK: save/edit/duplicate/default/delete work; A4>A5>A4 corrupts layout; arrow nudge
-  dead; delete toasts "saved". TEST10 now KEEPS 2 letterheads (Hawkqa Classic test = default, + copy) for Jasper's manual
-  testing. Jasper (22 Oct): don't delete test data after a test unless he asks.
+- Letterhead Run 1 (23 Oct, 4efd05c, TEST10): suite doc https://claude.ai/artifact/Ct2zEvaj67pKGVgoDmxLFo (137 cases,
+  results + bugs L01-L18 in "Run 1 results"): 77 pass, 33 fail, 6 partial, 10 blocked. S2: A4>A5>A4 corrupts layout; AI
+  rebuild 503 / all PDFs refused; Preview empty; offline Save hangs; dark theme unreadable. Library limit 20; 61st block
+  silently dropped. Not filed in Jira yet. TEST10 KEEPS "Hawkqa Classic test" (default) + copy and team "Hawkqa team"
+  (Jasper, 22 Oct: never delete test data unless he asks). Rebuild endpoint throttles (429) after ~6 calls.
 - Network: `i.ibb.co` (Auth0 login logo) is blocked in the Hawk environment. Harmless; not an app bug.
 - Browser automation: use the globally installed Playwright (`npm root -g`), not a fresh `npm i playwright`
   (its browser version won't match `/opt/pw-browsers`). Keep scripts in scratch, outside every repo.
