@@ -47,6 +47,9 @@ No secrets, credentials or PHI here, ever.
 - Letterhead (23 Oct, 4efd05c, TEST10): suite doc https://claude.ai/artifact/Ct2zEvaj67pKGVgoDmxLFo holds Run 1 (137
   cases), Run 1b (9 templates), Run 2 (keystrokes, every control) and real use; bugs L01-L30 + N01 FILED as V2-189..V2-218 (23 Oct). TEST10 KEEPS
   "Hawkqa Classic test" (default) + copy and team "Hawkqa team" (Jasper: never delete test data unless he asks).
+- Patients by role (23 Oct): Staff(+05) sees only Patient Info+Visits tabs (lacks patient.*.read); Clinical staff has no
+  patient.read (V2-171). +03 shows Staff in Users but logs in as Clinical staff. ~1 in 3 logins land on /signup after
+  picking TEST10 (any role; tokens fine, /visits works). Not filed yet. Org admin has no allergy rights (no "+ Add").
 - Patient intake Run 1 (23 Oct, app-dev2 = b86f6a3): doc https://claude.ai/artifact/BidxoG1JF95UzKFnQmKfui, 80 cases, bugs
   I01-I09 FILED V2-226..232 (+comments V2-123, V2-124). Public form /intake/KVFU; OTP = real SMS (don't send). TEST10 baseline restored (OTP on, front desk,
   4 required fields, 0 consents). Leave the "Test Yourself" pending submission alone (not Hawk's). V2-225 filed (Load more).
@@ -196,5 +199,3 @@ No secrets, credentials or PHI here, ever.
   never lands on Visits; its own comment suggests the opposite.
 
 ## Log
-- 2026-10-21: Logged in to app-dev-v2 (broken API host) and local dev; captured Visits dashboard. Found app-dev2 is the live
-  V2 dev site, traced it to `codex/v2-23-mobile-validation`, tested login for both roles, logged 2 bugs + 2 questions.
