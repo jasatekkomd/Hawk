@@ -198,4 +198,3 @@ No secrets, credentials or PHI here, ever.
 ## Log
 - 2026-10-21: Logged in to app-dev-v2 (broken API host) and local dev; captured Visits dashboard. Found app-dev2 is the live
   V2 dev site, traced it to `codex/v2-23-mobile-validation`, tested login for both roles, logged 2 bugs + 2 questions.
-- 2026-10-21: Wrote the Patients module test suite (218 cases after adding ekko-ds feedback cases) as a Claude Doc; findings above.
