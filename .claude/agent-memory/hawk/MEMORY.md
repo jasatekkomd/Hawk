@@ -4,9 +4,7 @@ Durable context for Hawk. Read it first, and update it at the end of each task.
 No secrets, credentials or PHI here, ever.
 
 ## Origin (2026-10-21)
-- Hawk was created by Jasper (jasper.p@ekkomd.com) in a Claude Code cloud session.
-  The definition is `.claude/agents/hawk.md`. Its first home was the `jasatekkomd/Hawk` repo (PR #1);
-  it was then added here (`Aidocscribe/ekko-web-app` PR #77, targeting `dev`).
+- Created by Jasper (jasper.p@ekkomd.com); definition `.claude/agents/hawk.md` (jasatekkomd/Hawk PR #1, ekko-web-app PR #77).
 - Mission: test **V2** (`ekko-web-app`), the rebuild of V1 (`Ekko-Frontend-react-ts`, bug fixes only).
 - Default mode: propose fixes; apply them only when the request authorizes it. Every task ends with the 7-part report.
 
