@@ -42,13 +42,15 @@ No secrets, credentials or PHI here, ever.
 - Local: `npm run dev` serves on port 5173 (strictPort). `.env.example` lists the `VITE_*` vars.
 - ekko-design-system is NOT attached by default. In a cloud session, attach it read-only (`add_repo`
   Aidocscribe/ekko-design-system, read) and clone shallow to `/home/user/ekko-design-system`. Push is refused (read-only by design).
-  Newest design: `anbu` = `dev` @ 19197c6 (22 Oct). Space pages = modules-proto/dashboard/settings/workspace/admin/<id>
+  Newest design: `anbu` @ cd2339d (26 Oct). Space pages = modules-proto/dashboard/settings/workspace/admin/<id>
   (workspace-letterhead, workspace-patient-intake: 22 states, images/; editor only in proto-by-roles/dashboard-master.html).
 - Letterhead (23 Oct, 4efd05c, TEST10): suite doc https://claude.ai/artifact/Ct2zEvaj67pKGVgoDmxLFo holds Run 1 (137
   cases), Run 1b (9 templates), Run 2 (keystrokes, every control) and real use; bugs L01-L30 + N01 FILED as V2-189..V2-218 (23 Oct). TEST10 KEEPS
   "Hawkqa Classic test" (default) + copy and team "Hawkqa team" (Jasper: never delete test data unless he asks).
-- V2-214 (26 Oct, app 849bf99): gerrit asked how a profile can be incomplete if sign-up captures it. Invite path asks only
-  name+phone (no reg no.), designation is never asked at sign-up, Settings lets reg no./designation be cleared; app has repair-profile. Reply drafted, not posted.
+- "Unclear Ticket" board column = status **Spec In-progress** (26 Oct: 8 of Jasper's: V2-191,206,214,224,228,229,230,235). gerrit (dev
+  agent) parks decision-dependent tickets there, @Jasper. Hawk drafted 8 replies (not posted; Jasper approves first). Facts: Staff default
+  tabs = Info+Visits (spec, tenant-overridable); design templates Split Header/Side Logo/Triple Logo have NO clinic block (Hawk's L19 ask was
+  wrong); design preview = min 2 pages + sample sections; spec: missing reg no. prints blank; Anbu: V2-224 working as designed.
 - Patients by role (23 Oct): Staff(+05) sees only Patient Info+Visits tabs (lacks patient.*.read); Clinical staff has no
   patient.read (V2-171). +03 shows Staff in Users but logs in as Clinical staff. ~1 in 3 logins land on /signup after
   picking TEST10 (any role; tokens fine, /visits works). Staff tabs filed V2-235; login + Users-role bugs not filed (not Patients; Jasper: file only Patients-module bugs). Org admin has no allergy rights (no "+ Add").
