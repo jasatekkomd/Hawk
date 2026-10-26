@@ -177,7 +177,6 @@ No secrets, credentials or PHI here, ever.
   580 for onboarding.
 - Discrepancy to keep in mind: the ekko-ds React README says "built with ekko-ds, not shadcn/ui", while
   ADR-004 lists shadcn/ui in the V2 stack. When it matters, ask which applies to a given screen.
-- The ekko-ds docs still say the system lives inside `Ekko-Frontend-react-ts`. In V2 it is vendored at `src/ekko-ds/`.
 
 ## Open items
 - [ ] Merge `ekko-web-app` PR #77 (and `jasatekkomd/Hawk` PR #1).
