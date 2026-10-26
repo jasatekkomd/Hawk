@@ -47,6 +47,8 @@ No secrets, credentials or PHI here, ever.
 - Letterhead (23 Oct, 4efd05c, TEST10): suite doc https://claude.ai/artifact/Ct2zEvaj67pKGVgoDmxLFo holds Run 1 (137
   cases), Run 1b (9 templates), Run 2 (keystrokes, every control) and real use; bugs L01-L30 + N01 FILED as V2-189..V2-218 (23 Oct). TEST10 KEEPS
   "Hawkqa Classic test" (default) + copy and team "Hawkqa team" (Jasper: never delete test data unless he asks).
+- V2-214 (26 Oct, app 849bf99): gerrit asked how a profile can be incomplete if sign-up captures it. Invite path asks only
+  name+phone (no reg no.), designation is never asked at sign-up, Settings lets reg no./designation be cleared; app has repair-profile. Reply drafted, not posted.
 - Patients by role (23 Oct): Staff(+05) sees only Patient Info+Visits tabs (lacks patient.*.read); Clinical staff has no
   patient.read (V2-171). +03 shows Staff in Users but logs in as Clinical staff. ~1 in 3 logins land on /signup after
   picking TEST10 (any role; tokens fine, /visits works). Staff tabs filed V2-235; login + Users-role bugs not filed (not Patients; Jasper: file only Patients-module bugs). Org admin has no allergy rights (no "+ Add").
@@ -143,8 +145,6 @@ No secrets, credentials or PHI here, ever.
   membership (legal-documents.repository.ts:132) but invitees are PENDING until invites/:id/accept; app gates invite pages
   behind RequireLegalAcceptance. Repro'd by backend unit test (mocked Prisma). Live repro needs an invite inbox Hawk lacks.
   Backend unit tests: ts-jest OOMs on full typecheck; use a scratch jest config with isolatedModules + diagnostics off.
-- 2026-10-22 08:35 UTC deploy broke app-dev2: VITE_CORE_SERVICE_URL now has https://, env.ts:34 prepends another, every
-  API call -> https://https//api-dev2 ("Unable to open your workspace"). Fixed by the 09:04 UTC redeploy (login works).
 - Design oracle for Patients: modules-proto/dashboard/patients/*/images/*.png are 2880x1800 renders of each state; compare
   side by side with app 1440 shots (crop design at 2x). Patients design diff filed as V2-109 (7 sheets attached).
 - Test data in TEST10 (22 Oct): KVFU-00000T..Z (Sprobe, Sdouble x2, Sdup x2, Bartholomew long name, Stitle) + 2 PNG docs on Sprobe, 2 visits + vitals
