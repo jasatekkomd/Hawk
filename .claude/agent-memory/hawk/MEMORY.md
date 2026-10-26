@@ -112,8 +112,7 @@ No secrets, credentials or PHI here, ever.
   checks requests only), build and lint pass. setup.ts fails tests on unhandled requests (afterEach), not pure bypass.
 - Test data left in TEST10: 27 synthetic "Hawkqa" patients (ids in scratchpad run1/B/created.json, run1/C/created.json).
   App has no patient delete; the API delete needs patient.delete (org admin has it, doctor doesn't).
-- Doctor account: patient.read but no patient.delete/restore, calendar.schedule=false; org admin lacks allergy.write.
-- Workspace choice isn't stored in Playwright storage state; scripts must pick TEST10 after login.
+- Doctor: patient.read, no patient.delete/restore, calendar.schedule=false. Playwright storage state omits workspace: pick TEST10.
 - 12 security-probe cases need Jasper's explicit sign-off before running against api-dev2.
 - New component tests (111, 21 failing on real bugs) kept outside the repo: scratchpad run1/hawk-tests/__hawk__/.
   Never push them to codex/v2-23-mobile-validation (Ian's branch); ask before any team branch.
