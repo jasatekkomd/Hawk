@@ -33,9 +33,7 @@ No secrets, credentials or PHI here, ever.
     on the page against the branch head to confirm what's live.
   - Login flow: `/signup` → "Log In" link → Auth0 identifier page → password page → `/onboarding/pick-workspace` → role home.
     Both test accounts work; workspace **TEST10** (1 Doctor, 1 Org Admin, 0 visits as of 2026-10-21).
-- Old V2 dev app: `https://app-dev-v2.ekkomd.com` (Auth0 `auth-dev`, built from `dev` by `deploy-v2-dev.yml`, last run
-  2026-09-17). **Broken:** secret `DEV_V2_VITE_CORE_SERVICE_URL` = `auth-dev.ekkomd.com`, so every API call hits Auth0
-  and fails CORS ("Couldn't load your workspaces"). The org admin test account does not work there (wrong password).
+- Old V2 dev app: `https://app-dev-v2.ekkomd.com` (Auth0 `auth-dev`, built from `dev` by `deploy-v2-dev.yml`, last run 2026-09-17). **Broken:** secret `DEV_V2_VITE_CORE_SERVICE_URL` = `auth-dev.ekkomd.com`, so every API call hits Auth0 and fails CORS ("Couldn't load your workspaces"). The org admin test account does not work there (wrong password).
 - `dev` frozen since 2026-09-17; V2 baseline is `ian-v2-lane` (ADR-018), release lane `codex/v2-23-mobile-validation`.
 - Local run against `api-dev`: `.env.local` (gitignored) with `VITE_CORE_SERVICE_URL=api-dev.ekkomd.com`; the public SPA
   client ID can be read from the deployed bundle. Never commit it.
@@ -47,7 +45,8 @@ No secrets, credentials or PHI here, ever.
   cases), Run 1b (9 templates), Run 2 (keystrokes, every control) and real use; bugs L01-L30 + N01 FILED as V2-189..V2-218 (23 Oct). TEST10 KEEPS
   "Hawkqa Classic test" (default) + copy and team "Hawkqa team" (Jasper: never delete test data unless he asks).
 - "Unclear Ticket" board column = status **Spec In-progress** (26 Oct: 8 of Jasper's: V2-191,206,214,224,228,229,230,235). gerrit (dev
-  agent) parks decision-dependent tickets there, @Jasper. Hawk drafted 8 replies (not posted; Jasper approves first). Facts: Staff default
+  agent) parks decision-dependent tickets there. Jasper wants replies that only say WHY the bug was raised, plain words, no decisions or
+  "what's needed"; 6 drafted (not 214: Jasper replied 25 Oct; not 224), not posted. Facts: Staff default
   tabs = Info+Visits (spec, tenant-overridable); design templates Split Header/Side Logo/Triple Logo have NO clinic block (Hawk's L19 ask was
   wrong); design preview = min 2 pages + sample sections; spec: missing reg no. prints blank; Anbu: V2-224 working as designed.
 - Patients by role (23 Oct): Staff(+05) sees only Patient Info+Visits tabs (lacks patient.*.read); Clinical staff has no
