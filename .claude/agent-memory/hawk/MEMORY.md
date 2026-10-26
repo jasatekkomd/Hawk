@@ -36,7 +36,7 @@ No secrets, credentials or PHI here, ever.
 - Old V2 dev app: `https://app-dev-v2.ekkomd.com` (Auth0 `auth-dev`, built from `dev` by `deploy-v2-dev.yml`, last run
   2026-09-17). **Broken:** secret `DEV_V2_VITE_CORE_SERVICE_URL` = `auth-dev.ekkomd.com`, so every API call hits Auth0
   and fails CORS ("Couldn't load your workspaces"). The org admin test account does not work there (wrong password).
-- `dev` has not moved since 2026-09-17 (`a1bd5af`); active V2 work is on feature branches.
+- `dev` frozen since 2026-09-17; V2 baseline is `ian-v2-lane` (ADR-018), release lane `codex/v2-23-mobile-validation`.
 - Local run against `api-dev`: `.env.local` (gitignored) with `VITE_CORE_SERVICE_URL=api-dev.ekkomd.com`; the public SPA
   client ID can be read from the deployed bundle. Never commit it.
 - Local: `npm run dev` serves on port 5173 (strictPort). `.env.example` lists the `VITE_*` vars.
@@ -68,6 +68,7 @@ No secrets, credentials or PHI here, ever.
   `git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*' && git fetch origin <branch>`.
 
 ## V2 testing facts (from dev @ a1bd5af, 2026-09-17)
+- **Spec knowledge (26 Oct): `v2-knowledge/00-INDEX.md`** (+6 digests). `main` .ai is stale; read .ai on codex/v2-23 or ian-v2-lane.
 - Vitest 3 + jsdom + RTL + user-event + MSW 2; about 134 test files, co-located under `src/features/**`.
   Run `npm run test:run` (`npm test` is watch mode).
 - `src/test/setup.ts`: `matchMedia` defaults to non-matching, and MSW unhandled requests are `bypass`.
