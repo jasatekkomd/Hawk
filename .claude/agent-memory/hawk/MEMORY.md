@@ -46,7 +46,7 @@ No secrets, credentials or PHI here, ever.
   "Hawkqa Classic test" (default) + copy and team "Hawkqa team" (Jasper: never delete test data unless he asks).
 - "Unclear Ticket" board column = status **Spec In-progress** (26 Oct: 8 of Jasper's: V2-191,206,214,224,228,229,230,235). gerrit (dev
   agent) parks decision-dependent tickets there. Jasper wants replies that only say WHY the bug was raised, plain words, no decisions or
-  "what's needed"; 6 drafted (not 214: Jasper replied 25 Oct; not 224), not posted. Facts: Staff default
+  "what's needed"; 6 POSTED 26 Oct (not 214: Jasper replied; not 224). Comment sign-off = "Found by Jasper's agent." (NOT "Hawk QA"). Facts: Staff default
   tabs = Info+Visits (spec, tenant-overridable); design templates Split Header/Side Logo/Triple Logo have NO clinic block (Hawk's L19 ask was
   wrong); design preview = min 2 pages + sample sections; spec: missing reg no. prints blank; Anbu: V2-224 working as designed.
 - Patients by role (23 Oct): Staff(+05) sees only Patient Info+Visits tabs (lacks patient.*.read); Clinical staff has no
