@@ -39,7 +39,6 @@ No secrets, credentials or PHI here, ever.
 - `dev` frozen since 2026-09-17; V2 baseline is `ian-v2-lane` (ADR-018), release lane `codex/v2-23-mobile-validation`.
 - Local run against `api-dev`: `.env.local` (gitignored) with `VITE_CORE_SERVICE_URL=api-dev.ekkomd.com`; the public SPA
   client ID can be read from the deployed bundle. Never commit it.
-- Local: `npm run dev` serves on port 5173 (strictPort). `.env.example` lists the `VITE_*` vars.
 - ekko-design-system is NOT attached by default. In a cloud session, attach it read-only (`add_repo`
   Aidocscribe/ekko-design-system, read) and clone shallow to `/home/user/ekko-design-system`. Push is refused (read-only by design).
   Newest design: `anbu` @ cd2339d (26 Oct). Space pages = modules-proto/dashboard/settings/workspace/admin/<id>
