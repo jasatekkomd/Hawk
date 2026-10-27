@@ -27,8 +27,7 @@ No secrets, credentials or PHI here, ever.
 - **Live V2 dev app (current): `https://app-dev2.ekkomd.com`** (confirmed by Jasper, 2026-10-21).
   - API `api-dev2.ekkomd.com`; Auth0 tenant `dev-iqxyolpw0karbhgx` (login page on custom domain `auth-dev.ekkomd.com` since 22 Oct); audience `https://api-dev2.ekkomd.com`
     (real access tokens, so the v1 token bug is fixed here).
-  - Built from **`ekko-web-app` branch `codex/v2-23-mobile-validation`** (author Iancalvinj), NOT `dev`. Matched by
-    `/v2/visits/search`, `/v2/settings/*`, "Pending intake", the Seats copy and Libre Baskerville, none of which exist on `dev`.
+  - Built from **`ekko-web-app` branch `codex/v2-23-mobile-validation`** (merged PRs by gerrit/Ian), NOT `dev`. Match deploy time to merge commits.
   - Not deployed by GitHub Actions (no run targets it); likely manual upload to S3/CloudFront. Check `last-modified`
     on the page against the branch head to confirm what's live.
   - Login flow: `/signup` → "Log In" link → Auth0 identifier page → password page → `/onboarding/pick-workspace` → role home.
@@ -49,6 +48,8 @@ No secrets, credentials or PHI here, ever.
   "what's needed"; 6 POSTED 26 Oct (not 214: Jasper replied; not 224). Comments carry NO sign-off at all (no Hawk QA, no "Found by Jasper's agent"). Facts: Staff default
   tabs = Info+Visits (spec, tenant-overridable); design templates Split Header/Side Logo/Triple Logo have NO clinic block (Hawk's L19 ask was
   wrong); design preview = min 2 pages + sample sections; spec: missing reg no. prints blank; Anbu: V2-224 working as designed.
+- Feature inventory vs Dev (27 Oct, app-dev2 = b19344e deployed 06:59 UTC): of 126 rows, 50 available, 53 partial, 23 not. Not built:
+  ABHA, billing/seats/payments, PA handoff, presence, snippets, "/" palette, note thumbs. Calendar LIVE; Ask AI placeholder; 16 note types; 60 languages.
 - Patients by role (23 Oct): Staff(+05) sees only Patient Info+Visits tabs (lacks patient.*.read); Clinical staff has no
   patient.read (V2-171). +03 shows Staff in Users but logs in as Clinical staff. ~1 in 3 logins land on /signup after
   picking TEST10 (any role; tokens fine, /visits works). Staff tabs filed V2-235; login + Users-role bugs not filed (not Patients; Jasper: file only Patients-module bugs). Org admin has no allergy rights (no "+ Add").
