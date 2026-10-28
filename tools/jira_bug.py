@@ -19,9 +19,8 @@ import base64, json, mimetypes, os, sys, urllib.request, uuid
 SITE = os.environ.get("JIRA_SITE", "https://scribeai-2024.atlassian.net")
 PROJECT = os.environ.get("JIRA_PROJECT", "V2")
 EMAIL = os.environ.get("JIRA_EMAIL", "jasper.p@ekkomd.com")
-ATTRIBUTION = ("Reported by Hawk QA, Jasper P's AI testing agent (built on Claude Code). "
-               "Hawk found and reproduced this issue and filed this ticket on Jasper's behalf. "
-               "Questions go to Jasper P.")
+ATTRIBUTION = ("Reported by Jasper P's Agent AI testing agent (built on Claude Code), "
+               "filed on Jasper's behalf. Questions go to Jasper P.")
 
 
 def auth_header():

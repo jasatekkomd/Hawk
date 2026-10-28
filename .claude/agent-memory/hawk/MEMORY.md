@@ -127,8 +127,8 @@ No secrets, credentials or PHI here, ever.
 - Filed V2-64 (Bug, Medium, labels Medium+Patients, assignee Ian Calvin Jacob): Patients "+" opens the visit flow.
   TICKET CONTENT RULE (Jasper, 2026-10-23): write only the issue, steps, actual result, expected behavior and the
   evidence (screenshots). NO recommended fixes, code pointers, root causes, file names or solutions. Focus on the issue.
-  Every ticket Hawk files starts with an info panel: "Reported by Hawk QA, Jasper P's AI testing agent (built on
-  Claude Code) ... filed on Jasper's behalf. Questions go to Jasper P." (Jasper, 2026-10-22).
+  Every ticket Hawk files starts with an info panel, exactly: "Reported by Jasper P's Agent AI testing agent (built on
+  Claude Code), filed on Jasper's behalf. Questions go to Jasper P." (Jasper, changed 2026-10-28; no "Hawk QA").
   Edit descriptions that hold images as ADF (keep the media ids) or the images break; markdown edits are unsafe there.
   Bulk bugs with screenshots: `python3 tools/jira_bug.py bugs.json` (create + attach, attribution panel added),
   `--attach KEY files...`, `--check`. Needs env JIRA_API_TOKEN (JIRA_EMAIL defaults to jasper.p@ekkomd.com).
