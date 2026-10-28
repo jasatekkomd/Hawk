@@ -181,8 +181,7 @@ No secrets, credentials or PHI here, ever.
 - App gap (code, 2026-10-21): Patient Info profile save shows no success toast; design says "… information saved ✓".
 - Breakpoints: 1120 / 1024 (overlays; test exactly 1024) / 1000 / 480 floor (the dashboard has no phone design) /
   580 for onboarding.
-- Discrepancy to keep in mind: the ekko-ds React README says "built with ekko-ds, not shadcn/ui", while
-  ADR-004 lists shadcn/ui in the V2 stack. When it matters, ask which applies to a given screen.
+- ekko-ds README says "not shadcn/ui" but ADR-004 lists shadcn/ui: ask which applies when it matters.
 
 ## Open items
 - [ ] Merge `ekko-web-app` PR #77 (and `jasatekkomd/Hawk` PR #1).
