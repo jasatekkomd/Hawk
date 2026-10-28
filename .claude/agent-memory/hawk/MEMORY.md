@@ -30,12 +30,10 @@ No secrets, credentials or PHI here, ever.
   - Built from **`ekko-web-app` branch `codex/v2-23-mobile-validation`** (merged PRs by gerrit/Ian), NOT `dev`. Match deploy time to merge commits.
   - Not deployed by GitHub Actions (no run targets it); likely manual upload to S3/CloudFront. Check `last-modified`
     on the page against the branch head to confirm what's live.
-  - Login flow: `/signup` → "Log In" link → Auth0 identifier page → password page → `/onboarding/pick-workspace` → role home.
-    Both test accounts work; workspace **TEST10** (1 Doctor, 1 Org Admin, 0 visits as of 2026-10-21).
-- Old V2 dev app: `https://app-dev-v2.ekkomd.com` (Auth0 `auth-dev`, built from `dev` by `deploy-v2-dev.yml`, last run 2026-09-17). **Broken:** secret `DEV_V2_VITE_CORE_SERVICE_URL` = `auth-dev.ekkomd.com`, so every API call hits Auth0 and fails CORS ("Couldn't load your workspaces"). The org admin test account does not work there (wrong password).
-- `dev` frozen since 2026-09-17; V2 baseline is `ian-v2-lane` (ADR-018), release lane `codex/v2-23-mobile-validation`.
-- Local run against `api-dev`: `.env.local` (gitignored) with `VITE_CORE_SERVICE_URL=api-dev.ekkomd.com`; the public SPA
-  client ID can be read from the deployed bundle. Never commit it.
+  - Login flow: `/signup` → "Log In" BUTTON (28 Oct) → Auth0 identifier → password → `/onboarding/pick-workspace` (click TEST10) → home.
+    Saved storageState is unreliable (Auth0 re-asks): log in fresh per script; full page.goto re-asks for the workspace.
+- Old app-dev-v2 (from `dev`) is broken (API URL secret points at Auth0); `dev` frozen since 17 Sep; baseline `ian-v2-lane` (ADR-018).
+  Local run vs api-dev: gitignored `.env.local`, SPA client ID from the deployed bundle; never commit it.
 - ekko-design-system is NOT attached by default. In a cloud session, attach it read-only (`add_repo`
   Aidocscribe/ekko-design-system, read) and clone shallow to `/home/user/ekko-design-system`. Push is refused (read-only by design).
   Newest design: `anbu` @ cd2339d (26 Oct). Space pages = modules-proto/dashboard/settings/workspace/admin/<id>
@@ -54,8 +52,15 @@ No secrets, credentials or PHI here, ever.
   patient.read (V2-171). +03 shows Staff in Users but logs in as Clinical staff. ~1 in 3 logins land on /signup after
   picking TEST10 (any role; tokens fine, /visits works). Staff tabs filed V2-235; login + Users-role bugs not filed (not Patients; Jasper: file only Patients-module bugs). Org admin has no allergy rights (no "+ Add").
 - Patient intake Run 1 (23 Oct, app-dev2 = b86f6a3): doc https://claude.ai/artifact/BidxoG1JF95UzKFnQmKfui, 80 cases, bugs
-  I01-I09 FILED V2-226..232 (+comments V2-123, V2-124). Public form /intake/KVFU; OTP = real SMS (don't send). TEST10 baseline restored (OTP on, front desk,
-  4 required fields, 0 consents). Leave the "Test Yourself" pending submission alone (not Hawk's). V2-225 filed (Load more).
+  I01-I09 FILED V2-226..232 (+comments V2-123, V2-124). Public form /intake/KVFU; OTP = real SMS (don't send). TEST10 baseline: OTP on, UHID off,
+  front desk approves, booking OFF with no doctors. Leave "Test Yourself" + "test" pending submissions alone (not Hawk's). V2-225 filed (Load more).
+- Rows 50-54 check (28 Oct, app-dev2 = d21b3ea): intake review, public intake, booking, WhatsApp consent, visit preview all WORK; booking
+  past phone step BLOCKED (booking always needs OTP). Unfiled findings: raw MALE/FEMALE in queue card; native radios/checkbox/select/date
+  (UHID choice, match card, consent dialog, booking selects/date); browser-drawn "Please fill out this field"; Reject Esc loses focus;
+  public header serif + "E" logo vs design "Share details for your visit"; preview Summary = full note, no visit title. Spec oracles:
+  ai-hub completed/archive/patient-intake-booking + visit-sharing-and-automatic-export (attach Aidocscribe/ai-hub read).
+  Data: KVFU-000012 Hawkqa Intakeapprove + visit; extra visit on Visitcheck (UHID match); Sdup consent recorded+withdrawn.
+  EKKO_TEST_STAFF_EMAIL = Clinical staff; EKKO_TEST_STAFF2_EMAIL = real Staff (front desk).
 - Letterhead Run 2 + real use (23 Oct): L21 number fields clamp per keystroke (font size 14 saves 48; only Width/Height
   fixed); export via signed visit works (default, team letterhead both apply). Signed synthetic visit "Hawkqa Visitcheck"
   by uploading an espeak-ng consult mp3 (apt install espeak-ng; Recording options > Upload recording, ~35 s). QA doctor
@@ -183,13 +188,8 @@ No secrets, credentials or PHI here, ever.
 - [ ] Jasper to rotate the QA account password (it was shared in chat on 2026-10-21) and store the new one only in the Hawk environment.
 - [ ] Rotate the credentials committed in `ekko-test-automation`.
 - [ ] Jasper to revoke the Jira API token pasted in chat on 2026-10-22 and add a new one only as JIRA_API_TOKEN in the Hawk env.
-- [ ] **Parked for later (Jasper, 2026-10-21):** confirm with design (Anbuu) the ekko-ds treatment and copy for the 5
-  Patients failure states the design specs list as undrawn, then update the test suite (PAT-UX-028):
-  1. Validation failure in Patient Info (patient-info design-spec, "A validation failure")
-  2. Failed save in Patient Info ("A save that fails")
-  3. Failed roster load (patients-roster design-spec)
-  4. Empty Documents tab (patient-documents design-spec, "A patient with no documents")
-  5. A file that won't open (patient-documents design-spec, "A file that will not open")
+- [ ] **Parked (Jasper, 21 Oct):** confirm with Anbuu the ekko-ds treatment/copy for 5 undrawn Patients failure states (Patient Info
+  validation + save failure, roster load failure, empty Documents, unopenable file), then update PAT-UX-028.
 - [ ] Fix `DEV_V2_VITE_CORE_SERVICE_URL` for app-dev-v2 or retire it. Doctor-only account on api-dev still missing.
 
 ## Bugs and questions (app-dev2 unless noted)
