@@ -56,8 +56,8 @@ No secrets, credentials or PHI here, ever.
   front desk approves, booking OFF with no doctors. Leave "Test Yourself" + "test" pending submissions alone (not Hawk's). V2-225 filed (Load more).
 - Rows 50-54 check (28 Oct, app-dev2 = d21b3ea): intake review, public intake, booking, WhatsApp consent, visit preview all WORK; booking
   past phone step BLOCKED (booking always needs OTP). Jasper 28 Oct: "leave the design, just test the functionality".
-  FUNCTIONAL BUG (unfiled): fast repeat tap on intake Submit (OTP off) = 3 sessions + 3 queued duplicates (2 left in queue as
-  evidence). Raw MALE/FEMALE in queue card. Verified OK: reason+custom answers to queue and visit Context; 409 races (intake
+  FILED V2-266 (Medium, Ian, 28 Oct): fast repeat tap on intake Submit (OTP off) = queued duplicates (2 left in queue as
+  evidence). Raw MALE/FEMALE in queue card: Jasper said leave it. Verified OK: reason+custom answers to queue and visit Context; 409 races (intake
   decision, WhatsApp consent); form-changed 409; auto-create with patient pick/Unassigned; UHID staff match. Not run: minor approval.
   ai-hub completed/archive/patient-intake-booking + visit-sharing-and-automatic-export (attach Aidocscribe/ai-hub read).
   Data: KVFU-000012 Hawkqa Intakeapprove + visit; extra visit on Visitcheck (UHID match); Sdup consent recorded+withdrawn.
