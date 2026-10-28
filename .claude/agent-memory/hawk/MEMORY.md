@@ -55,9 +55,10 @@ No secrets, credentials or PHI here, ever.
   I01-I09 FILED V2-226..232 (+comments V2-123, V2-124). Public form /intake/KVFU; OTP = real SMS (don't send). TEST10 baseline: OTP on, UHID off,
   front desk approves, booking OFF with no doctors. Leave "Test Yourself" + "test" pending submissions alone (not Hawk's). V2-225 filed (Load more).
 - Rows 50-54 check (28 Oct, app-dev2 = d21b3ea): intake review, public intake, booking, WhatsApp consent, visit preview all WORK; booking
-  past phone step BLOCKED (booking always needs OTP). Unfiled findings: raw MALE/FEMALE in queue card; native radios/checkbox/select/date
-  (UHID choice, match card, consent dialog, booking selects/date); browser-drawn "Please fill out this field"; Reject Esc loses focus;
-  public header serif + "E" logo vs design "Share details for your visit"; preview Summary = full note, no visit title. Spec oracles:
+  past phone step BLOCKED (booking always needs OTP). Jasper 28 Oct: "leave the design, just test the functionality".
+  FUNCTIONAL BUG (unfiled): fast repeat tap on intake Submit (OTP off) = 3 sessions + 3 queued duplicates (2 left in queue as
+  evidence). Raw MALE/FEMALE in queue card. Verified OK: reason+custom answers to queue and visit Context; 409 races (intake
+  decision, WhatsApp consent); form-changed 409; auto-create with patient pick/Unassigned; UHID staff match. Not run: minor approval.
   ai-hub completed/archive/patient-intake-booking + visit-sharing-and-automatic-export (attach Aidocscribe/ai-hub read).
   Data: KVFU-000012 Hawkqa Intakeapprove + visit; extra visit on Visitcheck (UHID match); Sdup consent recorded+withdrawn.
   EKKO_TEST_STAFF_EMAIL = Clinical staff; EKKO_TEST_STAFF2_EMAIL = real Staff (front desk).
