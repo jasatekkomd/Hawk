@@ -66,7 +66,7 @@ No secrets, credentials or PHI here, ever.
   Catalogues): TEST10 default Doctor on, Admin OFF, so Org Admin-only gets "no access" (C02); test via DOCADMIN. Granting Admin a
   permission is blocked by the auto-mode classifier: ask Jasper first. C01: dialog opened from Upload menu freezes page (body
   pointer-events none). Data: Hawkqa pharmacy (5 drugs) + labs (4 tests) Imported, 1 paused labs import Deleted.
-- Delete workspace (Space > Overview, 30 Oct): doc https://claude.ai/artifact/BTCgniS3sTpQVXzfRjJq17, 34 cases, D01-D06 NOT filed. Oracle = hub
+- Delete workspace (Space > Overview, 30 Oct): doc https://claude.ai/artifact/BTCgniS3sTpQVXzfRjJq17, 34 cases, D01-D06 FILED V2-315..320 (Ian). Oracle = hub
   completed/archive/workspace-deletion (ds has no screen). Never submit on TEST10; test on throwaway "Hawkqa ..." workspaces made via
   /onboarding/setup-workspace (+00 account; legal accept + Skip). 4 made and deleted; picker = TEST10 only. D01 no toast; D02 stale tab banner.
 - Letterhead Run 2 + real use (23 Oct): L21 number fields clamp per keystroke (font size 14 saves 48; only Width/Height
