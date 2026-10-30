@@ -25,9 +25,8 @@ No secrets, credentials or PHI here, ever.
     PA and Optometrist can't be invited on the Free plan (V2-233, 23 Oct).
     If any is unset, mark login-dependent tests as blocked.
 - **Live V2 dev app (current): `https://app-dev2.ekkomd.com`** (confirmed by Jasper, 2026-10-21).
-  - API `api-dev2.ekkomd.com`; Auth0 tenant `dev-iqxyolpw0karbhgx` (login page on custom domain `auth-dev.ekkomd.com` since 22 Oct); audience `https://api-dev2.ekkomd.com`
-    (real access tokens, so the v1 token bug is fixed here).
-  - Built from **`ekko-web-app` branch `codex/v2-23-mobile-validation`** (merged PRs by gerrit/Ian), NOT `dev`. Match deploy time to merge commits.
+  - API `api-dev2.ekkomd.com`; Auth0 `dev-iqxyolpw0karbhgx` via `auth-dev.ekkomd.com` (22 Oct); audience `https://api-dev2.ekkomd.com` (real access tokens).
+  - Built from **`ian-v2-lane`** since 29 Oct (PR #120 merged 03:43, live 03:48 UTC); before that `codex/v2-23-mobile-validation`. Match deploy time to merges.
   - Not deployed by GitHub Actions (no run targets it); likely manual upload to S3/CloudFront. Check `last-modified`
     on the page against the branch head to confirm what's live.
   - Login flow: `/signup` → "Log In" BUTTON (28 Oct) → Auth0 identifier → password → `/onboarding/pick-workspace` (click TEST10) → home.
@@ -62,12 +61,16 @@ No secrets, credentials or PHI here, ever.
   ai-hub completed/archive/patient-intake-booking + visit-sharing-and-automatic-export (attach Aidocscribe/ai-hub read).
   Data: KVFU-000012 Hawkqa Intakeapprove + visit; extra visit on Visitcheck (UHID match); Sdup consent recorded+withdrawn.
   EKKO_TEST_STAFF_EMAIL = Clinical staff; EKKO_TEST_STAFF2_EMAIL = real Staff (front desk).
+- Catalogue import (Space, /settings/data-import) Run 1 (30 Oct, ian-v2-lane 2cefdaa): doc https://claude.ai/artifact/VhDnoYTWBNymmJC8nR18Td,
+  74 cases, bugs C01-C15 (14, NOT filed yet). ADR-020: Patients import = Ekko support only; catalogue rights per role (Permissions >
+  Catalogues): TEST10 default Doctor on, Admin OFF, so Org Admin-only gets "no access" (C02); test via DOCADMIN. Granting Admin a
+  permission is blocked by the auto-mode classifier: ask Jasper first. C01: dialog opened from Upload menu freezes page (body
+  pointer-events none). Data: Hawkqa pharmacy (5 drugs) + labs (4 tests) Imported, 1 paused labs import Deleted.
 - Letterhead Run 2 + real use (23 Oct): L21 number fields clamp per keystroke (font size 14 saves 48; only Width/Height
   fixed); export via signed visit works (default, team letterhead both apply). Signed synthetic visit "Hawkqa Visitcheck"
   by uploading an espeak-ng consult mp3 (apt install espeak-ng; Recording options > Upload recording, ~35 s). QA doctor
   profile now synthetic (Hawkqa Doctor, HQA-000123, Jasper OK 23 Oct); PDF+Word exports print it. Word ignores section order.
-- Browser automation: use the globally installed Playwright (`npm root -g`), not a fresh `npm i playwright`
-  (its browser version won't match `/opt/pw-browsers`). Keep scripts in scratch, outside every repo.
+- Browser automation: global Playwright (`npm root -g`), never a fresh `npm i playwright`; scripts in scratch, outside repos.
 - Safety: rerouting app traffic or injecting CORS headers in Playwright is blocked as security weakening.
   Run the app locally with the right env instead.
 - Git quirk: shallow clones here track only one branch, so `git status` can't see pushed branches and
@@ -75,7 +78,8 @@ No secrets, credentials or PHI here, ever.
   `git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*' && git fetch origin <branch>`.
 
 ## V2 testing facts (from dev @ a1bd5af, 2026-09-17)
-- **Spec knowledge (26 Oct): `v2-knowledge/00-INDEX.md`** (+6 digests). `main` .ai is stale; read .ai on codex/v2-23 or ian-v2-lane.
+- **Spec knowledge (26 Oct): `v2-knowledge/00-INDEX.md`** (+6 digests). `main` .ai is stale; read .ai on ian-v2-lane.
+  Jasper 30 Oct: for every module, take module knowledge from the AI Hub (.ai/features/<slug>) AND the ekko-ds design-spec.
 - Vitest 3 + jsdom + RTL + user-event + MSW 2; about 134 test files, co-located under `src/features/**`.
   Run `npm run test:run` (`npm test` is watch mode).
 - `src/test/setup.ts`: `matchMedia` defaults to non-matching, and MSW unhandled requests are `bypass`.
@@ -185,15 +189,11 @@ No secrets, credentials or PHI here, ever.
 
 ## Open items
 - [ ] Merge `ekko-web-app` PR #77 (and `jasatekkomd/Hawk` PR #1).
-- [ ] Jasper to rotate the QA account password (it was shared in chat on 2026-10-21) and store the new one only in the Hawk environment.
+- [ ] Jasper: rotate the QA password (shared in chat 21 Oct) and revoke the Jira token pasted 22 Oct; keep both only in the Hawk env.
 - [ ] Rotate the credentials committed in `ekko-test-automation`.
-- [ ] Jasper to revoke the Jira API token pasted in chat on 2026-10-22 and add a new one only as JIRA_API_TOKEN in the Hawk env.
 - [ ] **Parked (Jasper, 21 Oct):** confirm with Anbuu the ekko-ds treatment/copy for 5 undrawn Patients failure states (Patient Info
   validation + save failure, roster load failure, empty Documents, unopenable file), then update PAT-UX-028.
 - [ ] Fix `DEV_V2_VITE_CORE_SERVICE_URL` for app-dev-v2 or retire it. Doctor-only account on api-dev still missing.
 
 ## Bugs and questions (app-dev2 unless noted)
-- 2026-10-21 · Low · Overview H1: the serif is correct (`--font-display` = Libre Baskerville, settings page titles,
-  chosen 2026-09-08), but the app renders it at **26px**; ekko-ds `.set-head h1` specifies **22px / 26px line-height**. Status: reported, not filed.
-- 2026-10-21 · Question (dev code) · `role-home.ts` sends any user with org_admin to `/settings`, so a doctor+admin
-  never lands on Visits; its own comment suggests the opposite.
+- 21 Oct, not filed: Overview H1 renders 26px (ekko-ds `.set-head h1` 22/26). Question: `role-home.ts` sends org_admin to /settings.
