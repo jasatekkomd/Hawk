@@ -74,11 +74,9 @@ No secrets, credentials or PHI here, ever.
   by uploading an espeak-ng consult mp3 (apt install espeak-ng; Recording options > Upload recording, ~35 s). QA doctor
   profile now synthetic (Hawkqa Doctor, HQA-000123, Jasper OK 23 Oct); PDF+Word exports print it. Word ignores section order.
 - Browser automation: global Playwright (`npm root -g`), never a fresh `npm i playwright`; scripts in scratch, outside repos.
-- Safety: rerouting app traffic or injecting CORS headers in Playwright is blocked as security weakening.
-  Run the app locally with the right env instead.
-- Git quirk: shallow clones here track only one branch, so `git status` can't see pushed branches and
-  stop hooks warn about "unpushed" commits. Fix it with
-  `git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*' && git fetch origin <branch>`.
+- Safety: rerouting app traffic or injecting CORS headers in Playwright is blocked; run the app locally instead.
+- Git quirk: shallow clones track one branch (stop hooks warn "unpushed"); fix with
+  `git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*' && git fetch origin <branch>`. Memory repo is now jasatekkomd/Hawk.
 
 ## V2 testing facts (from dev @ a1bd5af, 2026-09-17)
 - **Spec knowledge (26 Oct): `v2-knowledge/00-INDEX.md`** (+6 digests). `main` .ai is stale; read .ai on ian-v2-lane.
@@ -193,6 +191,7 @@ No secrets, credentials or PHI here, ever.
 ## Open items
 - [ ] Merge `ekko-web-app` PR #77 (and `jasatekkomd/Hawk` PR #1).
 - [ ] Jasper: rotate the QA password (shared in chat 21 Oct) and revoke the Jira token pasted 22 Oct; keep both only in the Hawk env.
+- [ ] Rotate the credentials committed in `ekko-test-automation`.
 - [ ] **Parked (Jasper, 21 Oct):** confirm with Anbuu the ekko-ds treatment/copy for 5 undrawn Patients failure states (Patient Info
   validation + save failure, roster load failure, empty Documents, unopenable file), then update PAT-UX-028.
 - [ ] Fix `DEV_V2_VITE_CORE_SERVICE_URL` for app-dev-v2 or retire it. Doctor-only account on api-dev still missing.
