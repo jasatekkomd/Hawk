@@ -62,7 +62,7 @@ No secrets, credentials or PHI here, ever.
   Data: KVFU-000012 Hawkqa Intakeapprove + visit; extra visit on Visitcheck (UHID match); Sdup consent recorded+withdrawn.
   EKKO_TEST_STAFF_EMAIL = Clinical staff; EKKO_TEST_STAFF2_EMAIL = real Staff (front desk).
 - Catalogue import (Space, /settings/data-import) Run 1 (30 Oct, ian-v2-lane 2cefdaa): doc https://claude.ai/artifact/VhDnoYTWBNymmJC8nR18Td,
-  74 cases, bugs C01-C15 (14, NOT filed yet). ADR-020: Patients import = Ekko support only; catalogue rights per role (Permissions >
+  74 cases, bugs C01-C15 FILED 30 Oct as V2-302..314 (C01..C13, Ian, label Settings); C15 = comment on V2-143; C14 = hub-intended. ADR-020: Patients import = Ekko support only; catalogue rights per role (Permissions >
   Catalogues): TEST10 default Doctor on, Admin OFF, so Org Admin-only gets "no access" (C02); test via DOCADMIN. Granting Admin a
   permission is blocked by the auto-mode classifier: ask Jasper first. C01: dialog opened from Upload menu freezes page (body
   pointer-events none). Data: Hawkqa pharmacy (5 drugs) + labs (4 tests) Imported, 1 paused labs import Deleted.
