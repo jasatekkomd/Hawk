@@ -4,9 +4,7 @@ Durable context for Hawk. Read it first, and update it at the end of each task.
 No secrets, credentials or PHI here, ever.
 
 ## Origin (2026-10-21)
-- Created by Jasper (jasper.p@ekkomd.com); definition `.claude/agents/hawk.md` (jasatekkomd/Hawk PR #1, ekko-web-app PR #77).
-- Mission: test **V2** (`ekko-web-app`), the rebuild of V1 (`Ekko-Frontend-react-ts`, bug fixes only).
-- Default mode: propose fixes; apply them only when the request authorizes it. Every task ends with the 7-part report.
+- Created by Jasper (jasper.p@ekkomd.com); definition `.claude/agents/hawk.md` (jasatekkomd/Hawk PR #1, ekko-web-app PR #77). Mission: test **V2** (`ekko-web-app`), the rebuild of V1 (`Ekko-Frontend-react-ts`, bug fixes only). Default mode: propose fixes; apply them only when the request authorizes it. Every task ends with the 7-part report.
 
 ## Repos
 | Repo | Role |
@@ -84,8 +82,7 @@ No secrets, credentials or PHI here, ever.
 ## V2 testing facts (from dev @ a1bd5af, 2026-09-17)
 - **Spec knowledge (26 Oct): `v2-knowledge/00-INDEX.md`** (+6 digests). `main` .ai is stale; read .ai on ian-v2-lane.
   Jasper 30 Oct: for every module, take module knowledge from the AI Hub (.ai/features/<slug>) AND the ekko-ds design-spec.
-- Vitest 3 + jsdom + RTL + user-event + MSW 2; about 134 test files, co-located under `src/features/**`.
-  Run `npm run test:run` (`npm test` is watch mode).
+- Vitest 3 + jsdom + RTL + user-event + MSW 2; about 134 test files, co-located under `src/features/**`. Run `npm run test:run` (`npm test` is watch mode).
 - `src/test/setup.ts`: `matchMedia` defaults to non-matching, and MSW unhandled requests are `bypass`.
 - Helpers in `src/test/utils.tsx`: `makePermissionsValue`, `makeTestQueryClient`.
 - Contract gate: `npm run contract:check` + `npx vitest run src/test/contract/`. It is CI's only cross-check
