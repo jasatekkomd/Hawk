@@ -69,14 +69,16 @@ No secrets, credentials or PHI here, ever.
 - Delete workspace (Space > Overview, 30 Oct): doc https://claude.ai/artifact/BTCgniS3sTpQVXzfRjJq17, 34 cases, D01-D06 FILED V2-315..320 (Ian). Oracle = hub
   completed/archive/workspace-deletion (ds has no screen). Never submit on TEST10; test on throwaway "Hawkqa ..." workspaces made via
   /onboarding/setup-workspace (+00 account; legal accept + Skip). 4 made and deleted; picker = TEST10 only. D01 no toast; D02 stale tab banner.
+- Super Admin (hub b51d052, 2 Nov): `super_admin` = seeded system role code (roles.seed.js), Ekko internal, never an editable matrix column; guard lets it
+  through every check. Not customer-assignable: Ekko support gets it only via V2-134 temporary grant (support@ekkomd.com, Admin emails 6-digit OTP, 7 days,
+  revocable in Security; local, not deployed). Spec: features/workspace-support-access. Never verify permissions as super_admin (patient-management spec).
 - Letterhead Run 2 + real use (23 Oct): L21 number fields clamp per keystroke (font size 14 saves 48; only Width/Height
   fixed); export via signed visit works (default, team letterhead both apply). Signed synthetic visit "Hawkqa Visitcheck"
   by uploading an espeak-ng consult mp3 (apt install espeak-ng; Recording options > Upload recording, ~35 s). QA doctor
   profile now synthetic (Hawkqa Doctor, HQA-000123, Jasper OK 23 Oct); PDF+Word exports print it. Word ignores section order.
 - Browser automation: global Playwright (`npm root -g`), never a fresh `npm i playwright`; scripts in scratch, outside repos.
 - Safety: rerouting app traffic or injecting CORS headers in Playwright is blocked; run the app locally instead.
-- Git quirk: shallow clones track one branch (stop hooks warn "unpushed"); fix with
-  `git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*' && git fetch origin <branch>`. Memory repo is now jasatekkomd/Hawk.
+- Git quirk: shallow clones track one branch; fix: `git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*' && git fetch origin <branch>`.
 
 ## V2 testing facts (from dev @ a1bd5af, 2026-09-17)
 - **Spec knowledge (26 Oct): `v2-knowledge/00-INDEX.md`** (+6 digests). `main` .ai is stale; read .ai on ian-v2-lane.
