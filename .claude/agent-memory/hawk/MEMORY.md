@@ -22,8 +22,7 @@ No secrets, credentials or PHI here, ever.
   - Network access: Limited, allowing `*.ekkomd.com` and `*.auth0.com`, plus package managers.
   - Env vars (TEST10 roles): `EKKO_TEST_ORGADMIN_EMAIL` org admin, `EKKO_TEST_DOCTOR_EMAIL` doctor, `EKKO_TEST_CLINICAL_EMAIL`
     clinical staff, `EKKO_TEST_STAFF_EMAIL` + `EKKO_TEST_STAFF2_EMAIL` staff, `EKKO_TEST_DOCADMIN_EMAIL` org admin+doctor; shared `EKKO_TEST_PASSWORD`.
-    PA and Optometrist can't be invited on the Free plan (V2-233, 23 Oct).
-    If any is unset, mark login-dependent tests as blocked.
+    PA and Optometrist can't be invited on the Free plan (V2-233, 23 Oct). If any is unset, mark login-dependent tests as blocked.
 - **Live V2 dev app (current): `https://app-dev2.ekkomd.com`** (confirmed by Jasper, 2026-10-21).
   - API `api-dev2.ekkomd.com`; Auth0 `dev-iqxyolpw0karbhgx` via `auth-dev.ekkomd.com` (22 Oct); audience `https://api-dev2.ekkomd.com` (real access tokens).
   - Built from **`ian-v2-lane`** since 29 Oct (PR #120 merged 03:43, live 03:48 UTC); before that `codex/v2-23-mobile-validation`. Match deploy time to merges.
@@ -31,8 +30,7 @@ No secrets, credentials or PHI here, ever.
     on the page against the branch head to confirm what's live.
   - Login flow: `/signup` → "Log In" BUTTON (28 Oct) → Auth0 identifier → password → `/onboarding/pick-workspace` (click TEST10) → home.
     Saved storageState is unreliable (Auth0 re-asks): log in fresh per script; full page.goto re-asks for the workspace.
-- Old app-dev-v2 (from `dev`) is broken (API URL secret points at Auth0); `dev` frozen since 17 Sep; baseline `ian-v2-lane` (ADR-018).
-  Local run vs api-dev: gitignored `.env.local`, SPA client ID from the deployed bundle; never commit it.
+- Old app-dev-v2 (from `dev`) is broken (API URL secret points at Auth0); `dev` frozen since 17 Sep; baseline `ian-v2-lane` (ADR-018). Local run vs api-dev: gitignored `.env.local`, SPA client ID from the deployed bundle; never commit it.
 - ekko-design-system is NOT attached by default. In a cloud session, attach it read-only (`add_repo`
   Aidocscribe/ekko-design-system, read) and clone shallow to `/home/user/ekko-design-system`. Push is refused (read-only by design).
   Newest design: `anbu` @ cd2339d (26 Oct). Space pages = modules-proto/dashboard/settings/workspace/admin/<id>
