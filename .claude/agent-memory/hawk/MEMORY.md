@@ -30,7 +30,7 @@ No secrets, credentials or PHI here, ever.
     on the page against the branch head to confirm what's live.
   - Login flow: `/signup` → "Log In" BUTTON (28 Oct) → Auth0 identifier → password → `/onboarding/pick-workspace` (click TEST10) → home.
     Saved storageState is unreliable (Auth0 re-asks): log in fresh per script; full page.goto re-asks for the workspace.
-- Old app-dev-v2 (from `dev`) is broken (API URL secret points at Auth0); `dev` frozen since 17 Sep; baseline `ian-v2-lane` (ADR-018). Local run vs api-dev: gitignored `.env.local`, SPA client ID from the deployed bundle; never commit it.
+- Old app-dev-v2 (from `dev`) is broken; baseline `ian-v2-lane` (ADR-018). Local run vs api-dev: gitignored `.env.local`, SPA client ID from the deployed bundle; never commit it.
 - ekko-design-system is NOT attached by default. In a cloud session, attach it read-only (`add_repo`
   Aidocscribe/ekko-design-system, read) and clone shallow to `/home/user/ekko-design-system`. Push is refused (read-only by design).
   Newest design: `anbu` @ cd2339d (26 Oct). Space pages = modules-proto/dashboard/settings/workspace/admin/<id>
@@ -67,6 +67,9 @@ No secrets, credentials or PHI here, ever.
 - Delete workspace (Space > Overview, 30 Oct): doc https://claude.ai/artifact/BTCgniS3sTpQVXzfRjJq17, 34 cases, D01-D06 FILED V2-315..320 (Ian). Oracle = hub
   completed/archive/workspace-deletion (ds has no screen). Never submit on TEST10; test on throwaway "Hawkqa ..." workspaces made via
   /onboarding/setup-workspace (+00 account; legal accept + Skip). 4 made and deleted; picker = TEST10 only. D01 no toast; D02 stale tab banner.
+- Booking form editor (Space > Appointments > Customize form, 2 Nov, 2cefdaa, Org Admin): doc https://claude.ai/artifact/PGq8QF4gxGMVNkKK7bpkF3,
+  52 cases, bugs BK01-09 NOT filed yet (asked Jasper). Oracle: hub completed/archive/patient-intake-booking + ds workspace-appointments/patient-intake. Top: editor Save also
+  saves page drafts; dbl-click Save = false 409; server accepts custom label Age/Phone. V2-124 = layout (don't refile). Baseline restored (rev 13).
 - Super Admin (hub b51d052, 2 Nov): `super_admin` = seeded system role code (roles.seed.js), Ekko internal, never an editable matrix column; guard lets it
   through every check. Not customer-assignable: Ekko support gets it only via V2-134 temporary grant (support@ekkomd.com, Admin emails 6-digit OTP, 7 days,
   revocable in Security; local, not deployed). Spec: features/workspace-support-access. Never verify permissions as super_admin (patient-management spec).
