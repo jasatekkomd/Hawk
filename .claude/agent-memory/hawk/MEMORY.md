@@ -21,7 +21,7 @@ No secrets, credentials or PHI here, ever.
   - Env vars (TEST10 roles): `EKKO_TEST_ORGADMIN_EMAIL` org admin, `EKKO_TEST_DOCTOR_EMAIL` doctor, `EKKO_TEST_CLINICAL_EMAIL`
     clinical staff, `EKKO_TEST_STAFF_EMAIL` + `EKKO_TEST_STAFF2_EMAIL` staff, `EKKO_TEST_DOCADMIN_EMAIL` org admin+doctor; shared `EKKO_TEST_PASSWORD`.
     PA and Optometrist can't be invited on the Free plan (V2-233, 23 Oct). If any is unset, mark login-dependent tests as blocked.
-    3 Nov: `EKKO_TEST_PA_EMAIL` + `EKKO_TEST_OPTOMETRIST_EMAIL` hold +7/+8 but TEST10 members are +07 ("test pa", PA) / +08 ("OP Test"); Jasper fixing vars, retest PA+Opt in a NEW session: tools/patients-role-check/README.md.
+    PA = `EKKO_TEST_PA_EMAIL` (+07, "test pa"), Optometrist = `EKKO_TEST_OPTOMETRIST_EMAIL` (+08, "OP Test"); Jasper fixed vars 3 Nov (new sessions).
 - **Live V2 dev app (current): `https://app-dev2.ekkomd.com`** (confirmed by Jasper, 2026-10-21).
   - API `api-dev2.ekkomd.com`; Auth0 `dev-iqxyolpw0karbhgx` via `auth-dev.ekkomd.com` (22 Oct); audience `https://api-dev2.ekkomd.com` (real access tokens).
   - Built from **`ian-v2-lane`** since 29 Oct (PR #120 merged 03:43, live 03:48 UTC); before that `codex/v2-23-mobile-validation`. Match deploy time to merges.
@@ -75,9 +75,9 @@ No secrets, credentials or PHI here, ever.
   offline Load more silent; 'TITLENot recorded'. TEST10 matrix: Clinical staff patients.view OFF (tabs ON), Front desk Info+Visits+edit. Names: letters only.
   Hub (3 Nov): PA creates (patient-mgmt: '+' = New Patient for Doctor/PA; default create on, edit off). Optometrist: create default ON from its
   resolved grants (live matrix), edit off, tabs Info/Visits/Measurements only; patient-intake-booking says seeded Optometrist lacks patient.create.self.
-- Super Admin (hub b51d052, 2 Nov): `super_admin` = seeded system role code (roles.seed.js), Ekko internal, never an editable matrix column; guard lets it
-  through every check. Not customer-assignable: Ekko support gets it only via V2-134 temporary grant (support@ekkomd.com, Admin emails 6-digit OTP, 7 days,
-  revocable in Security; local, not deployed). Spec: features/workspace-support-access. Never verify permissions as super_admin (patient-management spec).
+  PA+Opt live (3 Nov): PA = matrix (6 tabs, create 201, edit, upload, flags). Opt BUGS (unfiled): Create patient ON but UI shows only New visit
+  and POST /v2/patients 403; Manage documents ON (API upload 201) but no Documents tab/Upload in UI. Synthetic: Hawkqa Paprobe; probe PDFs on KVFU-000016.
+- Super Admin (hub b51d052, 2 Nov): `super_admin` = seeded system role code (roles.seed.js), Ekko internal, never an editable matrix column; guard lets it through every check. Not customer-assignable: Ekko support gets it only via V2-134 temporary grant (support@ekkomd.com, Admin emails 6-digit OTP, 7 days, revocable in Security; local, not deployed). Spec: features/workspace-support-access. Never verify permissions as super_admin (patient-management spec).
 - Letterhead Run 2 + real use (23 Oct): L21 number fields clamp per keystroke (font size 14 saves 48; only Width/Height
   fixed); export via signed visit works (default, team letterhead both apply). Signed synthetic visit "Hawkqa Visitcheck"
   by uploading an espeak-ng consult mp3 (apt install espeak-ng; Recording options > Upload recording, ~35 s). QA doctor
