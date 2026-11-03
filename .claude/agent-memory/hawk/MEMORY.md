@@ -21,6 +21,7 @@ No secrets, credentials or PHI here, ever.
   - Env vars (TEST10 roles): `EKKO_TEST_ORGADMIN_EMAIL` org admin, `EKKO_TEST_DOCTOR_EMAIL` doctor, `EKKO_TEST_CLINICAL_EMAIL`
     clinical staff, `EKKO_TEST_STAFF_EMAIL` + `EKKO_TEST_STAFF2_EMAIL` staff, `EKKO_TEST_DOCADMIN_EMAIL` org admin+doctor; shared `EKKO_TEST_PASSWORD`.
     PA and Optometrist can't be invited on the Free plan (V2-233, 23 Oct). If any is unset, mark login-dependent tests as blocked.
+    3 Nov: Jasper adding `EKKO_TEST_PA_EMAIL` (PA) + `EKKO_TEST_OPTOMETRIST_EMAIL` (Optometrist) to the Hawk env; new sessions only.
 - **Live V2 dev app (current): `https://app-dev2.ekkomd.com`** (confirmed by Jasper, 2026-10-21).
   - API `api-dev2.ekkomd.com`; Auth0 `dev-iqxyolpw0karbhgx` via `auth-dev.ekkomd.com` (22 Oct); audience `https://api-dev2.ekkomd.com` (real access tokens).
   - Built from **`ian-v2-lane`** since 29 Oct (PR #120 merged 03:43, live 03:48 UTC); before that `codex/v2-23-mobile-validation`. Match deploy time to merges.
@@ -90,8 +91,7 @@ No secrets, credentials or PHI here, ever.
 - **No Playwright in V2 yet.** Proposing it is open; it is not added.
 - Specs: `.ai/features/<slug>/spec.md`. Status values on dev are `draft | backlog | in-development | done`
   (older syncs used `in-build` / `shipped`). Plans and HAZARDS live in `plans/<feature>/`.
-- `DEBT.md`: `src/ekko-ds/MANIFEST` line order varies by machine collation. That is known and benign;
-  don't report it as a bug.
+- `DEBT.md`: `src/ekko-ds/MANIFEST` line order varies by machine collation. That is known and benign; don't report it as a bug.
 
 ## Patients module (researched 2026-10-21 on `codex/v2-23-mobile-validation` @ 2c09e2a)
 - Test suite (218 cases, IDs `PAT-<AREA>-NNN`): Claude Doc https://claude.ai/artifact/C9LauSqX9So2t3rPcBpMhd
