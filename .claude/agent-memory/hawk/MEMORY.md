@@ -52,10 +52,7 @@ No secrets, credentials or PHI here, ever.
   front desk approves, booking OFF with no doctors. Leave "Test Yourself" + "test" pending submissions alone (not Hawk's). V2-225 filed (Load more).
 - Rows 50-54 check (28 Oct, app-dev2 = d21b3ea): intake review, public intake, booking, WhatsApp consent, visit preview all WORK; booking
   past phone step BLOCKED (booking always needs OTP). Jasper 28 Oct: "leave the design, just test the functionality".
-  FILED V2-266 (Medium, Ian, 28 Oct): fast repeat tap on intake Submit (OTP off) = queued duplicates (2 left in queue as
-  evidence). Raw MALE/FEMALE in queue card: Jasper said leave it. Verified OK: reason+custom answers to queue and visit Context; 409 races (intake
-  decision, WhatsApp consent); form-changed 409; auto-create with patient pick/Unassigned; UHID staff match. Not run: minor approval.
-  ai-hub completed/archive/patient-intake-booking + visit-sharing-and-automatic-export (attach Aidocscribe/ai-hub read).
+  FILED V2-266 (Medium, Ian, 28 Oct): fast repeat tap on intake Submit (OTP off) = queued duplicates (2 left in queue as evidence). Raw MALE/FEMALE in queue card: Jasper said leave it. Verified OK: reason+custom answers to queue and visit Context; 409 races (intake decision, WhatsApp consent); form-changed 409; auto-create with patient pick/Unassigned; UHID staff match. Not run: minor approval. ai-hub completed/archive/patient-intake-booking + visit-sharing-and-automatic-export (attach Aidocscribe/ai-hub read).
   Data: KVFU-000012 Hawkqa Intakeapprove + visit; extra visit on Visitcheck (UHID match); Sdup consent recorded+withdrawn.
   EKKO_TEST_STAFF_EMAIL = Clinical staff; EKKO_TEST_STAFF2_EMAIL = real Staff (front desk).
 - Catalogue import (Space, /settings/data-import) Run 1 (30 Oct, ian-v2-lane 2cefdaa): doc https://claude.ai/artifact/VhDnoYTWBNymmJC8nR18Td,
@@ -80,6 +77,9 @@ No secrets, credentials or PHI here, ever.
 - Workspace switcher (top bar chip, 3 Nov, 2cefdaa, 8 roles): oracle ds app-chrome/workspace-switcher + hub login-upgrade §5/edge 2-4. PASS: open/Esc/
   outside/focus, admin-only Manage+Invite, switch reloads + isolates (patients, visits, recents, deep link), draft guard. FILED 3 Nov V2-347 (W1, Onboarding), V2-348 (W2, Settings): invited
   members' Add workspace -> blank complete-profile (requiresProfile=true; only +00 false), role line shows one role (my-workspaces returns role 'Org Admin' for +00 and +04, both 'Admin, Doctor' on Users). Throwaways deleted.
+- Visits Admin+Front desk (3 Nov, 2cefdaa): +00 now Admin ONLY (Jasper). Oracle hub staff-fd-worklist + ds visits/frontdesk (Admin = frontdesk shell).
+  Only role 'staff' gets FD worklist; Admin gets clinician panel (consult read-only OK). Unfiled: Admin view, reassign/delete perms unusable,
+  bad visit id 500, Ready-for-sign-off in no tab, 150h waits/old days, worklist blank behind New visit, no create toast. Visits made: Retestgbbad, Topbargbbad.
 - Super Admin (hub b51d052, 2 Nov): `super_admin` = seeded system role code (roles.seed.js), Ekko internal, never an editable matrix column; guard lets it through every check. Not customer-assignable: Ekko support gets it only via V2-134 temporary grant (support@ekkomd.com, Admin emails 6-digit OTP, 7 days, revocable in Security; local, not deployed). Spec: features/workspace-support-access. Never verify permissions as super_admin (patient-management spec).
 - Letterhead Run 2 + real use (23 Oct): L21 number fields clamp per keystroke (font size 14 saves 48; only Width/Height fixed); export via signed visit works (default, team letterhead both apply). Signed synthetic visit "Hawkqa Visitcheck" by uploading an espeak-ng consult mp3 (apt install espeak-ng; Recording options > Upload recording, ~35 s). QA doctor profile now synthetic (Hawkqa Doctor, HQA-000123, Jasper OK 23 Oct); PDF+Word exports print it. Word ignores section order.
 - Browser automation: global Playwright (`npm root -g`), never a fresh `npm i playwright`; scripts in scratch, outside repos.
