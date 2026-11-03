@@ -77,11 +77,11 @@ No secrets, credentials or PHI here, ever.
   resolved grants (live matrix), edit off, tabs Info/Visits/Measurements only; patient-intake-booking says seeded Optometrist lacks patient.create.self.
   PA+Opt live (3 Nov): PA = matrix. FILED 3 Nov (Ian, Patients): V2-340 Opt can't create (perm ON), V2-341 dup warning off-screen, V2-342 Opt
   no upload place, V2-343 stale form errors, V2-344 TITLENot recorded, V2-345 auto-load on scroll + offline silent. Jasper: don't file N3 toast ✓, N5 DOB aria.
+- Workspace switcher (top bar chip, 3 Nov, 2cefdaa, 8 roles): oracle ds app-chrome/workspace-switcher + hub login-upgrade §5/edge 2-4. PASS: open/Esc/
+  outside/focus, admin-only Manage+Invite, switch reloads + isolates (patients, visits, recents, deep link), draft guard. BUGS (unfiled): invited
+  members' Add workspace -> blank complete-profile (requiresProfile=true; only +00 false), role line shows one role. Throwaways Switchtest/Switchtwo deleted.
 - Super Admin (hub b51d052, 2 Nov): `super_admin` = seeded system role code (roles.seed.js), Ekko internal, never an editable matrix column; guard lets it through every check. Not customer-assignable: Ekko support gets it only via V2-134 temporary grant (support@ekkomd.com, Admin emails 6-digit OTP, 7 days, revocable in Security; local, not deployed). Spec: features/workspace-support-access. Never verify permissions as super_admin (patient-management spec).
-- Letterhead Run 2 + real use (23 Oct): L21 number fields clamp per keystroke (font size 14 saves 48; only Width/Height
-  fixed); export via signed visit works (default, team letterhead both apply). Signed synthetic visit "Hawkqa Visitcheck"
-  by uploading an espeak-ng consult mp3 (apt install espeak-ng; Recording options > Upload recording, ~35 s). QA doctor
-  profile now synthetic (Hawkqa Doctor, HQA-000123, Jasper OK 23 Oct); PDF+Word exports print it. Word ignores section order.
+- Letterhead Run 2 + real use (23 Oct): L21 number fields clamp per keystroke (font size 14 saves 48; only Width/Height fixed); export via signed visit works (default, team letterhead both apply). Signed synthetic visit "Hawkqa Visitcheck" by uploading an espeak-ng consult mp3 (apt install espeak-ng; Recording options > Upload recording, ~35 s). QA doctor profile now synthetic (Hawkqa Doctor, HQA-000123, Jasper OK 23 Oct); PDF+Word exports print it. Word ignores section order.
 - Browser automation: global Playwright (`npm root -g`), never a fresh `npm i playwright`; scripts in scratch, outside repos.
 - Safety: rerouting app traffic or injecting CORS headers in Playwright is blocked; run the app locally instead.
 - Git quirk: shallow clones track one branch; fix: `git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*' && git fetch origin <branch>`.
