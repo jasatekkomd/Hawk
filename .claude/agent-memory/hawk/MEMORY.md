@@ -21,7 +21,7 @@ No secrets, credentials or PHI here, ever.
   - Env vars (TEST10 roles): `EKKO_TEST_ORGADMIN_EMAIL` org admin, `EKKO_TEST_DOCTOR_EMAIL` doctor, `EKKO_TEST_CLINICAL_EMAIL`
     clinical staff, `EKKO_TEST_STAFF_EMAIL` + `EKKO_TEST_STAFF2_EMAIL` staff, `EKKO_TEST_DOCADMIN_EMAIL` org admin+doctor; shared `EKKO_TEST_PASSWORD`.
     PA and Optometrist can't be invited on the Free plan (V2-233, 23 Oct). If any is unset, mark login-dependent tests as blocked.
-    3 Nov: Jasper adding `EKKO_TEST_PA_EMAIL` (PA) + `EKKO_TEST_OPTOMETRIST_EMAIL` (Optometrist) to the Hawk env; new sessions only.
+    3 Nov: `EKKO_TEST_PA_EMAIL` + `EKKO_TEST_OPTOMETRIST_EMAIL` set, but Auth0 refuses both with EKKO_TEST_PASSWORD (wrong pw or no account): BLOCKED.
 - **Live V2 dev app (current): `https://app-dev2.ekkomd.com`** (confirmed by Jasper, 2026-10-21).
   - API `api-dev2.ekkomd.com`; Auth0 `dev-iqxyolpw0karbhgx` via `auth-dev.ekkomd.com` (22 Oct); audience `https://api-dev2.ekkomd.com` (real access tokens).
   - Built from **`ian-v2-lane`** since 29 Oct (PR #120 merged 03:43, live 03:48 UTC); before that `codex/v2-23-mobile-validation`. Match deploy time to merges.
@@ -70,6 +70,9 @@ No secrets, credentials or PHI here, ever.
   52 cases, bugs BK01-09 FILED 3 Nov as V2-322..330 (Ian, label Settings). Oracle: hub completed/archive/patient-intake-booking + ds workspace-appointments/patient-intake. Top: editor Save also
   saves page drafts; dbl-click Save = false 409; server accepts custom label Age/Phone. V2-124 = layout (don't refile). Baseline restored (rev 13). 3 Nov dev2-vs-design table (same doc): 9 same, 25 differ;
   design = every change applies at once + Undo toasts, close keeps changes; dev2 = draft + Save, close discards. Proto: PIK.customize('booking').
+- Patients retest (3 Nov, 2cefdaa, 6 roles): 30 tickets PASS (incl. V2-37,64,65,67,70,71,72,76,77-server,225), V2-69 partial, V2-171 ON path blocked;
+  new: dup-warning actions off-screen + stuck 'Creating…'; create-form errors don't clear until resubmit; top-bar toast lacks ✓; DOB aria 'DD/MM/YYYY';
+  offline Load more silent; 'TITLENot recorded'. TEST10 matrix: Clinical staff patients.view OFF (tabs ON), Front desk Info+Visits+edit. Names: letters only.
 - Super Admin (hub b51d052, 2 Nov): `super_admin` = seeded system role code (roles.seed.js), Ekko internal, never an editable matrix column; guard lets it
   through every check. Not customer-assignable: Ekko support gets it only via V2-134 temporary grant (support@ekkomd.com, Admin emails 6-digit OTP, 7 days,
   revocable in Security; local, not deployed). Spec: features/workspace-support-access. Never verify permissions as super_admin (patient-management spec).
@@ -86,17 +89,14 @@ No secrets, credentials or PHI here, ever.
   Jasper 30 Oct: for every module, take module knowledge from the AI Hub (.ai/features/<slug>) AND the ekko-ds design-spec.
 - Vitest 3 + jsdom + RTL + user-event + MSW 2; about 134 test files, co-located under `src/features/**`. Run `npm run test:run` (`npm test` is watch mode).
 - `src/test/setup.ts`: `matchMedia` defaults to non-matching, and MSW unhandled requests are `bypass`. Helpers in `src/test/utils.tsx`: `makePermissionsValue`, `makeTestQueryClient`.
-- Contract gate: `npm run contract:check` + `npx vitest run src/test/contract/`. It is CI's only cross-check
-  with the backend; six mismatches once shipped past mocked tests.
+- Contract gate: `npm run contract:check` + `npx vitest run src/test/contract/`. It is CI's only cross-check with the backend; six mismatches once shipped past mocked tests.
 - **No Playwright in V2 yet.** Proposing it is open; it is not added.
-- Specs: `.ai/features/<slug>/spec.md`. Status values on dev are `draft | backlog | in-development | done`
-  (older syncs used `in-build` / `shipped`). Plans and HAZARDS live in `plans/<feature>/`.
+- Specs: `.ai/features/<slug>/spec.md`. Status values on dev are `draft | backlog | in-development | done` (older syncs used `in-build` / `shipped`). Plans and HAZARDS live in `plans/<feature>/`.
 - `DEBT.md`: `src/ekko-ds/MANIFEST` line order varies by machine collation. That is known and benign; don't report it as a bug.
 
 ## Patients module (researched 2026-10-21 on `codex/v2-23-mobile-validation` @ 2c09e2a)
 - Test suite (218 cases, IDs `PAT-<AREA>-NNN`): Claude Doc https://claude.ai/artifact/C9LauSqX9So2t3rPcBpMhd
-- Hub spec `features/patient-management/spec.md` is NOT synced into the repo (.ai is one commit behind hub);
-  read acceptance criteria via `plans/patient-management/*` and `DEBT.md`.
+- Hub spec `features/patient-management/spec.md` is NOT synced into the repo (.ai is one commit behind hub); read acceptance criteria via `plans/patient-management/*` and `DEBT.md`.
 - Backend `ekko-coreService-nodejs` `main` has NO `/v2/*` routes; the app's /v2/patients calls come from an
   unmerged backend branch (#1545 lineage). Backend rules from `main` (/patients) are second-hand for api-dev2.
 - CONFIRMED live 2026-10-22: roster "+" (aria "New patient") navigates to `/visits/new?newPatient=1&from=/patients`;
