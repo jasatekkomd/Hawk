@@ -73,6 +73,8 @@ No secrets, credentials or PHI here, ever.
 - Patients retest (3 Nov, 2cefdaa, 6 roles): 30 tickets PASS (incl. V2-37,64,65,67,70,71,72,76,77-server,225), V2-69 partial, V2-171 ON path blocked;
   new: dup-warning actions off-screen + stuck 'Creating…'; create-form errors don't clear until resubmit; top-bar toast lacks ✓; DOB aria 'DD/MM/YYYY';
   offline Load more silent; 'TITLENot recorded'. TEST10 matrix: Clinical staff patients.view OFF (tabs ON), Front desk Info+Visits+edit. Names: letters only.
+  Hub (3 Nov): PA creates (patient-mgmt: '+' = New Patient for Doctor/PA; default create on, edit off). Optometrist: create default ON from its
+  resolved grants (live matrix), edit off, tabs Info/Visits/Measurements only; patient-intake-booking says seeded Optometrist lacks patient.create.self.
 - Super Admin (hub b51d052, 2 Nov): `super_admin` = seeded system role code (roles.seed.js), Ekko internal, never an editable matrix column; guard lets it
   through every check. Not customer-assignable: Ekko support gets it only via V2-134 temporary grant (support@ekkomd.com, Admin emails 6-digit OTP, 7 days,
   revocable in Security; local, not deployed). Spec: features/workspace-support-access. Never verify permissions as super_admin (patient-management spec).
@@ -107,10 +109,8 @@ No secrets, credentials or PHI here, ever.
 - Edit = PATCH `/v2/patients/:id/profile` with `revision` (409 on conflict), though DEBT.md says read-only. Asked Jasper.
 - Suspected gaps to verify first: no duplicate-patient check; title never sent; card Cancel and create-drawer scrim
   discard drafts silently; allergy typing not a draft; load-more failures silent; visit-preview and WhatsApp caches
-  not evicted on patient switch; sort menu ignores Esc; WhatsApp withdraw unconfirmed; 3 vs 5 gender options;
-  create toast shows raw server message; mobile ≤767 blank screen when roster collapsed with no selection.
-- Older backend (main) suspects: `?current_user_id=` impersonation, gender missing → 500, unvalidated sort_by → 500,
-  unbounded limit, stack traces in error bodies, no audit except patient view, mime type trusted, no virus scan.
+  not evicted on patient switch; sort menu ignores Esc; WhatsApp withdraw unconfirmed; 3 vs 5 gender options; create toast shows raw server message; mobile ≤767 blank screen when roster collapsed with no selection.
+- Older backend (main) suspects: `?current_user_id=` impersonation, gender missing → 500, unvalidated sort_by → 500, unbounded limit, stack traces in error bodies, no audit except patient view, mime type trusted, no virus scan.
 
 ### Run 1 (2026-10-21, build 2c09e2a, TEST10): 126 pass, 61 fail, 18 blocked, 13 not run of 218
 - Results tab "Run 1 results" in the suite doc (43 bugs B01-B43 with a Status dropdown). Raw: scratchpad run1/merged.json.
