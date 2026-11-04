@@ -81,7 +81,11 @@ No secrets, credentials or PHI here, ever.
   Only role staff gets FD worklist; Admin gets clinician panel (consult read-only OK). FILED 4 Nov (Ian, Visits) V2-351..357: Admin view, perms unusable (rel V2-163/337),
   bad visit id 500, Ready-for-sign-off in no tab, 150h waits/old days, worklist blank behind New visit, no create toast; V2-358 Create on Completed row, V2-359 wait runs on Completed. Visits made: Retestgbbad, Topbargbbad.
 - Super Admin (hub b51d052, 2 Nov): `super_admin` = seeded system role code (roles.seed.js), Ekko internal, never an editable matrix column; guard lets it through every check. Not customer-assignable: Ekko support gets it only via V2-134 temporary grant (support@ekkomd.com, Admin emails 6-digit OTP, 7 days, revocable in Security; local, not deployed). Spec: features/workspace-support-access. Never verify permissions as super_admin (patient-management spec).
-- Letterhead Run 2 + real use (23 Oct): L21 number fields clamp per keystroke (font size 14 saves 48; only Width/Height fixed); export via signed visit works (default, team letterhead both apply). Signed synthetic visit "Hawkqa Visitcheck" by uploading an espeak-ng consult mp3 (apt install espeak-ng; Recording options > Upload recording, ~35 s). QA doctor profile now synthetic (Hawkqa Doctor, HQA-000123, Jasper OK 23 Oct); PDF+Word exports print it. Word ignores section order.
+- Signed synthetic visit: upload an espeak-ng consult mp3 (apt install espeak-ng; Recording options > Upload recording, ~35 s). QA doctor profile = Hawkqa Doctor, HQA-000123 (Jasper OK 23 Oct).
+- Calendar (left rail, 4 Nov, 2cefdaa, 8 roles): doc https://claude.ai/artifact/57T5JRsLFd9Rkmi7Ephjzj, 155 cases, Run 1 = 96 run, 58 pass, 8 fail, 30 differ from design.
+  Bugs C01-C06 NOT FILED yet: C01 Long procedure booking 500 + drawer stuck; C02 later-day visit offers/accepts Check in + No-show; C03 no-show on checked-in before time;
+  C04 other day's visits shown as "Later today"; C05 Esc drops focus; C06 type chips swap. V2-169 covers generic refusal reasons. TEST10 matrix: Schedule ON only Admin + Clinical staff,
+  Cancel OFF for all (5 Hawkqa appts on Hawkqa Doctor 4-6 Nov can't be cancelled). Ready to consult = protected (DO-NOT-REGRESS:155). Holidays create = API only (hub open q). Scripts: scratch cal/*.js.
 - Browser automation: global Playwright (`npm root -g`), never a fresh `npm i playwright`; scripts in scratch, outside repos.
 - Safety: rerouting app traffic or injecting CORS headers in Playwright is blocked; run the app locally instead.
 - Git quirk: shallow clones track one branch; fix: `git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*' && git fetch origin <branch>`.
@@ -196,5 +200,3 @@ No secrets, credentials or PHI here, ever.
   validation + save failure, roster load failure, empty Documents, unopenable file), then update PAT-UX-028.
 - [ ] Fix `DEV_V2_VITE_CORE_SERVICE_URL` for app-dev-v2 or retire it. Doctor-only account on api-dev still missing.
 
-## Bugs and questions (app-dev2 unless noted)
-- 21 Oct, not filed: Overview H1 renders 26px (ekko-ds `.set-head h1` 22/26). Question: `role-home.ts` sends org_admin to /settings.
