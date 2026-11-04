@@ -86,9 +86,7 @@ No secrets, credentials or PHI here, ever.
   Bugs C01-C06 NOT FILED yet: C01 Long procedure booking 500 + drawer stuck; C02 later-day visit offers/accepts Check in + No-show; C03 no-show on checked-in before time;
   C04 other day's visits shown as "Later today"; C05 Esc drops focus; C06 type chips swap. V2-169 covers generic refusal reasons. TEST10 matrix: Schedule ON only Admin + Clinical staff,
   Cancel OFF for all (5 Hawkqa appts on Hawkqa Doctor 4-6 Nov can't be cancelled). Ready to consult = protected (DO-NOT-REGRESS:155). Holidays create = API only (hub open q). Scripts: scratch cal/*.js.
-- Browser automation: global Playwright (`npm root -g`), never a fresh `npm i playwright`; scripts in scratch, outside repos.
-- Safety: rerouting app traffic or injecting CORS headers in Playwright is blocked; run the app locally instead.
-- Git quirk: shallow clones track one branch; fix: `git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*' && git fetch origin <branch>`.
+- Browser automation: global Playwright (`npm root -g`), scripts in scratch; rerouting traffic/injecting CORS is blocked (run app locally).
 
 ## V2 testing facts (from dev @ a1bd5af, 2026-09-17)
 - **Spec knowledge (26 Oct): `v2-knowledge/00-INDEX.md`** (+6 digests). `main` .ai is stale; read .ai on ian-v2-lane.
