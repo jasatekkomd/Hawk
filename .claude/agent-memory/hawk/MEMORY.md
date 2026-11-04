@@ -83,7 +83,7 @@ No secrets, credentials or PHI here, ever.
 - Super Admin (hub b51d052, 2 Nov): `super_admin` = seeded system role code (roles.seed.js), Ekko internal, never an editable matrix column; guard lets it through every check. Not customer-assignable: Ekko support gets it only via V2-134 temporary grant (support@ekkomd.com, Admin emails 6-digit OTP, 7 days, revocable in Security; local, not deployed). Spec: features/workspace-support-access. Never verify permissions as super_admin (patient-management spec).
 - Signed synthetic visit: upload an espeak-ng consult mp3 (apt install espeak-ng; Recording options > Upload recording, ~35 s). QA doctor profile = Hawkqa Doctor, HQA-000123 (Jasper OK 23 Oct).
 - Calendar (left rail, 4 Nov, 2cefdaa, 8 roles): doc https://claude.ai/artifact/57T5JRsLFd9Rkmi7Ephjzj, 155 cases, Run 1 = 96 run, 58 pass, 8 fail, 30 differ from design.
-  Bugs C01-C06 NOT FILED yet: C01 Long procedure booking 500 + drawer stuck; C02 later-day visit offers/accepts Check in + No-show; C03 no-show on checked-in before time;
+  Bugs FILED 4 Nov V2-371..376 (Ian, label Calendar): C01 Long procedure booking 500 + drawer stuck; C02 later-day visit offers/accepts Check in + No-show; C03 no-show on checked-in before time;
   C04 other day's visits shown as "Later today"; C05 Esc drops focus; C06 type chips swap. V2-169 covers generic refusal reasons. TEST10 matrix: Schedule ON only Admin + Clinical staff,
   Cancel OFF for all (5 Hawkqa appts on Hawkqa Doctor 4-6 Nov can't be cancelled). Ready to consult = protected (DO-NOT-REGRESS:155). Holidays create = API only (hub open q). Scripts: scratch cal/*.js.
 - Browser automation: global Playwright (`npm root -g`), scripts in scratch; rerouting traffic/injecting CORS is blocked (run app locally).
