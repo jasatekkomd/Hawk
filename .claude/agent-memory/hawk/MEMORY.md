@@ -36,7 +36,10 @@ No secrets, credentials or PHI here, ever.
   (workspace-letterhead, workspace-patient-intake: 22 states, images/; editor only in proto-by-roles/dashboard-master.html).
 - Letterhead (23 Oct, 4efd05c, TEST10): suite doc https://claude.ai/artifact/Ct2zEvaj67pKGVgoDmxLFo holds Run 1 (137
   cases), Run 1b (9 templates), Run 2 (keystrokes, every control) and real use; bugs L01-L30 + N01 FILED as V2-189..V2-218 (23 Oct). TEST10 KEEPS
-  "Hawkqa Classic test" (default) + copy and team "Hawkqa team" (Jasper: never delete test data unless he asks).
+  "Hawkqa Classic test" (default) + copy and team "Hawkqa team" (Jasper: never delete test data unless he asks). Retest 5 Nov (141a9d2):
+  V2-189..217 = 25 pass; V2-191 FAIL (preview 1 empty page), PARTIAL 196 (429/401 not induced), 206 (Triple/Split footers), 215 (Rx head
+  overprints at page foot). NEW: after saving a letterhead, next save/Set default/Delete in same page = 409 "Letterhead changed. Reload" (reload fixes).
+  Editor: route /settings/manage-letterhead; library max 20; clinic details are workspace-wide (don't save edits). Test default changes on a throwaway ws.
 - "Unclear Ticket" board column = status **Spec In-progress** (26 Oct: 8 of Jasper's: V2-191,206,214,224,228,229,230,235). gerrit (dev
   agent) parks decision-dependent tickets there. Jasper wants replies that only say WHY the bug was raised, plain words, no decisions or
   "what's needed"; 6 POSTED 26 Oct (not 214: Jasper replied; not 224). Comments carry NO sign-off at all (no Hawk QA, no "Found by Jasper's agent"). Facts: Staff default
@@ -110,9 +113,7 @@ No secrets, credentials or PHI here, ever.
   "Patient created ✓" and closes. Drawer header back/close icons render as blank squares.
 - Create patient lives in the New visit drawer (`/visits/new?newPatient=1`); ekko-ds NewPatientDrawer/ABHA not wired.
 - Edit = PATCH `/v2/patients/:id/profile` with `revision` (409 on conflict), though DEBT.md says read-only. Asked Jasper.
-- Suspected gaps to verify first: no duplicate-patient check; title never sent; card Cancel and create-drawer scrim
-  discard drafts silently; allergy typing not a draft; load-more failures silent; visit-preview and WhatsApp caches
-  not evicted on patient switch; sort menu ignores Esc; WhatsApp withdraw unconfirmed; 3 vs 5 gender options; create toast shows raw server message; mobile ≤767 blank screen when roster collapsed with no selection.
+- (21 Oct pre-run suspects folded: verified in Run 1 below and filed as V2-65..94.)
 - Older backend (main) suspects: `?current_user_id=` impersonation, gender missing → 500, unvalidated sort_by → 500, unbounded limit, stack traces in error bodies, no audit except patient view, mime type trusted, no virus scan.
 
 ### Run 1 (2026-10-21, build 2c09e2a, TEST10): 126 pass, 61 fail, 18 blocked, 13 not run of 218
