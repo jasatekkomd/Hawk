@@ -67,7 +67,7 @@ No secrets, credentials or PHI here, ever.
   52 cases, bugs BK01-09 FILED 3 Nov as V2-322..330 (Ian, label Settings). Oracle: hub completed/archive/patient-intake-booking + ds workspace-appointments/patient-intake. Top: editor Save also
   saves page drafts; dbl-click Save = false 409; server accepts custom label Age/Phone. V2-124 = layout (don't refile). Baseline restored (rev 13). 3 Nov dev2-vs-design table (same doc): 9 same, 25 differ;
   design = every change applies at once + Undo toasts, close keeps changes; dev2 = draft + Save, close discards. Proto: PIK.customize('booking').
-- Patients retest (3 Nov, 2cefdaa, 6 roles): 30 tickets PASS (incl. V2-37,64,65,67,70,71,72,76,77-server,225), V2-69 partial, V2-171 ON path blocked;
+- Patients retest (3 Nov, 2cefdaa) and 5 Nov (141a9d2, group A, 29 tickets): 26 PASS; V2-64 PARTIAL (combined new patient + visit path has no toast), V2-232 PARTIAL (TEST10 has no logo so QR logo is unverifiable), V2-342 FAIL (Opt Manage docs without View docs: warning only shown on toggle). Legal gate v1.1 (3 Nov) blocks logins until 'Accept and continue'; login.js retry must check for the Switch workspace button. Restore intake settings by in-app nav, never reload. Data: Hawkqa Rtgbijg/Rlacebi/Rviceah(2 same-day visits+vitals)/Optcagdh/Autoassigneeaae (auto visit).
   new: dup-warning actions off-screen + stuck 'Creating…'; create-form errors don't clear until resubmit; top-bar toast lacks ✓; DOB aria 'DD/MM/YYYY';
   offline Load more silent; 'TITLENot recorded'. TEST10 matrix: Clinical staff patients.view OFF (tabs ON), Front desk Info+Visits+edit. Names: letters only.
   Hub (3 Nov): PA creates (patient-mgmt: '+' = New Patient for Doctor/PA; default create on, edit off). Optometrist: create default ON from its
