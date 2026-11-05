@@ -135,13 +135,12 @@ No secrets, credentials or PHI here, ever.
   TICKET CONTENT RULE (Jasper, 2026-10-23): write only the issue, steps, actual result, expected behavior and the
   evidence (screenshots). NO recommended fixes, code pointers, root causes, file names or solutions. Focus on the issue.
   Every ticket Hawk files starts with an info panel, exactly: "Reported by Jasper P's Agent AI testing agent (built on
-  Claude Code), filed on Jasper's behalf. Questions go to Jasper P." (Jasper, changed 2026-10-28; no "Hawk QA").
-  Edit descriptions that hold images as ADF (keep the media ids) or the images break; markdown edits are unsafe there.
+  Claude Code), filed on Jasper's behalf. Questions go to Jasper P." (Jasper, changed 2026-10-28; no "Hawk QA"). Edit descriptions that hold images as ADF (keep the media ids) or the images break; markdown edits are unsafe there.
   Bulk bugs with screenshots: `python3 tools/jira_bug.py bugs.json` (create + attach, attribution panel added),
-  `--attach KEY files...`, `--check`. Needs env JIRA_API_TOKEN (JIRA_EMAIL defaults to jasper.p@ekkomd.com).
-  JIRA_API_TOKEN works in Hawk sessions started after it was saved (/myself 200; CREATE_ISSUES+ATTACHMENTS granted).
+  `--attach KEY files...`, `--check`. Needs env JIRA_API_TOKEN (JIRA_EMAIL defaults to jasper.p@ekkomd.com). JIRA_API_TOKEN works in Hawk sessions started after it was saved (/myself 200; CREATE_ISSUES+ATTACHMENTS granted).
   Jira link API: {type:Blocks, inwardIssue:A, outwardIssue:B} means A blocks B.
   Before filing, JQL-search V2 for duplicates AND check ekko-ds/spec/DEBT: design-defined or undrawn behaviour is not an app bug.
+  RETEST RULE (Jasper, 5 Nov): when retesting, never comment on or change ticket status; give Jasper fixed / not fixed lists, he decides.
   Mask emails with Playwright screenshot `mask`. Severity map: S1 Highest, S2 High, S3 Medium (labels = priority + Patients).
 ### Patients Run 1 filing (2026-10-22)
 - B01 = existing V2-37 (Hawk comment + 10/10 repro evidence added). S2: B02 V2-65, B03 V2-66, B04 V2-67, B05 V2-68,
