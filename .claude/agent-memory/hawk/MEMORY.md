@@ -34,14 +34,11 @@ No secrets, credentials or PHI here, ever.
   Aidocscribe/ekko-design-system, read) and clone shallow to `/home/user/ekko-design-system`. Push is refused (read-only by design).
   Newest design: `anbu` @ cd2339d (26 Oct). Space pages = modules-proto/dashboard/settings/workspace/admin/<id>
   (workspace-letterhead, workspace-patient-intake: 22 states, images/; editor only in proto-by-roles/dashboard-master.html).
-- Letterhead (23 Oct, 4efd05c, TEST10): suite doc https://claude.ai/artifact/Ct2zEvaj67pKGVgoDmxLFo holds Run 1 (137
-  cases), Run 1b (9 templates), Run 2 (keystrokes, every control) and real use; bugs L01-L30 + N01 FILED as V2-189..V2-218 (23 Oct). TEST10 KEEPS
-  "Hawkqa Classic test" (default) + copy and team "Hawkqa team" (Jasper: never delete test data unless he asks). Retest 5 Nov (141a9d2):
+- Letterhead (23 Oct, 4efd05c, TEST10): suite doc https://claude.ai/artifact/Ct2zEvaj67pKGVgoDmxLFo holds Run 1 (137 cases), Run 1b (9 templates), Run 2 (keystrokes, every control) and real use; bugs L01-L30 + N01 FILED as V2-189..V2-218 (23 Oct). TEST10 KEEPS "Hawkqa Classic test" (default) + copy and team "Hawkqa team" (Jasper: never delete test data unless he asks). Retest 5 Nov (141a9d2):
   V2-189..217 = 25 pass; V2-191 FAIL (preview 1 empty page), PARTIAL 196 (429/401 not induced), 206 (Triple/Split footers), 215 (Rx head
   overprints at page foot). NEW: after saving a letterhead, next save/Set default/Delete in same page = 409 "Letterhead changed. Reload" (reload fixes).
   Editor: route /settings/manage-letterhead; library max 20; clinic details are workspace-wide (don't save edits). Test default changes on a throwaway ws.
-- "Unclear Ticket" board column = status **Spec In-progress** (26 Oct: 8 of Jasper's: V2-191,206,214,224,228,229,230,235). gerrit (dev
-  agent) parks decision-dependent tickets there. Jasper wants replies that only say WHY the bug was raised, plain words, no decisions or
+- "Unclear Ticket" board column = status **Spec In-progress** (26 Oct: 8 of Jasper's: V2-191,206,214,224,228,229,230,235). gerrit (dev agent) parks decision-dependent tickets there. Jasper wants replies that only say WHY the bug was raised, plain words, no decisions or
   "what's needed"; 6 POSTED 26 Oct (not 214: Jasper replied; not 224). Comments carry NO sign-off at all (no Hawk QA, no "Found by Jasper's agent"). Facts: Staff default
   tabs = Info+Visits (spec, tenant-overridable); design templates Split Header/Side Logo/Triple Logo have NO clinic block (Hawk's L19 ask was
   wrong); design preview = min 2 pages + sample sections; spec: missing reg no. prints blank; Anbu: V2-224 working as designed.
@@ -89,6 +86,8 @@ No secrets, credentials or PHI here, ever.
   Bugs FILED 4 Nov V2-371..376 (Ian, label Calendar): C01 Long procedure booking 500 + drawer stuck; C02 later-day visit offers/accepts Check in + No-show; C03 no-show on checked-in before time;
   C04 other day's visits shown as "Later today"; C05 Esc drops focus; C06 type chips swap. V2-169 covers generic refusal reasons. TEST10 matrix: Schedule ON only Admin + Clinical staff,
   Cancel OFF for all (5 Hawkqa appts on Hawkqa Doctor 4-6 Nov can't be cancelled). Ready to consult = protected (DO-NOT-REGRESS:155). Holidays create = API only (hub open q). Scripts: scratch cal/*.js.
+- RETEST ALL 94 (5 Nov, 141a9d2, 4 parallel hawk agents): 80 PASS, 8 PARTIAL (64,196,206,215,232,316,325,328), 3 FAIL (191,315,342), 3 BLOCKED (219-221: soniox STT host
+  blocked by env network). Not commented (Jasper decides). TEST10 found: online booking ON rev 29 (left ON), Admin ticked for catalogue import (V2-303).
 - Retest D (5 Nov, 141a9d2): V2-218/222/223/224/233 PASS, 219/220/221 BLOCKED (live mic). Legal gate "Master Agreement v1.1" shows at first login per account. Visits made: 6661845e, 0f7e6a4e, stray patientless bad46c61.
 - Browser automation: global Playwright (`npm root -g`), scripts in scratch; rerouting traffic/injecting CORS is blocked (run app locally). Live recording + dictation use wss://stt-rt.soniox.com, blocked in the Hawk env (403): live-mic tests are BLOCKED.
 
