@@ -88,6 +88,7 @@ No secrets, credentials or PHI here, ever.
   Cancel OFF for all (5 Hawkqa appts on Hawkqa Doctor 4-6 Nov can't be cancelled). Ready to consult = protected (DO-NOT-REGRESS:155). Holidays create = API only (hub open q). Scripts: scratch cal/*.js.
 - RETEST ALL 94 (5 Nov, 141a9d2, 4 parallel hawk agents): 80 PASS, 8 PARTIAL (64,196,206,215,232,316,325,328), 3 FAIL (191,315,342), 3 BLOCKED (219-221: soniox STT host
   blocked by env network). Not commented (Jasper decides). TEST10 found: online booking ON rev 29 (left ON), Admin ticked for catalogue import (V2-303). VERIFY B (6 Nov, a53742c): 23 CONFIRMED, V2-311 HOLD ("1 lab tests imported"); booking PUT refuses reserved/dup custom labels (400); TEST10 booking form now rev 39 (= rev 29 content); Doctor-only gets "Workspace settings require Admin access" (no Space).
+- VERIFY A (6 Nov, a53742c, Patients+intake, 26): 20 CONFIRMED; HOLD 65 (visits tab >20 untestable: max 6 visits), 78 (1899 still saves; 150 rule), 86 ('Checked in' untoned), 229/230/235 (later decisions). API calls from page need `current_user_id` param + captured Bearer. Intake routing doctorId is shared by both Assign-to modes: restore 'If no preference' to Unassigned. Hawkqa Bfamone has 31 docs (doc paging). PA +07 needed legal accept 6 Nov.
 - Retest D (5 Nov, 141a9d2): V2-218/222/223/224/233 PASS, 219/220/221 BLOCKED (live mic). Legal gate "Master Agreement v1.1" shows at first login per account. Visits made: 6661845e, 0f7e6a4e, stray patientless bad46c61.
 - Browser automation: global Playwright (`npm root -g`), scripts in scratch; rerouting traffic/injecting CORS is blocked (run app locally). Live recording + dictation use wss://stt-rt.soniox.com, blocked in the Hawk env (403): live-mic tests are BLOCKED.
 
@@ -112,7 +113,6 @@ No secrets, credentials or PHI here, ever.
   "Patient created ✓" and closes. Drawer header back/close icons render as blank squares.
 - Create patient lives in the New visit drawer (`/visits/new?newPatient=1`); ekko-ds NewPatientDrawer/ABHA not wired.
 - Edit = PATCH `/v2/patients/:id/profile` with `revision` (409 on conflict), though DEBT.md says read-only. Asked Jasper.
-- (21 Oct pre-run suspects folded: verified in Run 1 below and filed as V2-65..94.)
 - Older backend (main) suspects: `?current_user_id=` impersonation, gender missing → 500, unvalidated sort_by → 500, unbounded limit, stack traces in error bodies, no audit except patient view, mime type trusted, no virus scan.
 
 ### Run 1 (2026-10-21, build 2c09e2a, TEST10): 126 pass, 61 fail, 18 blocked, 13 not run of 218
