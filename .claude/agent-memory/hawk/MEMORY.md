@@ -89,8 +89,7 @@ No secrets, credentials or PHI here, ever.
 - RETEST 94 (5 Nov, 141a9d2): 80 PASS, PARTIAL 64,196,206,215,232,316,325,328; FAIL 191,315,342; BLOCKED 219-221 (soniox). VERIFY (6 Nov, a53742c, Jasper OK'd Done for 100% fixed, no comments):
   66 moved to DONE (transition id 41); 14 HOLD in Testing: 311 ("1 lab tests"), 65 (visits >20 untestable), 78/214/224/229/230/235 (later decisions), 86 (Checked in untoned), 193 (dark btn 2.8:1),
   197/201 (409 after save), 204 (Edited line offset), 223 (not submitted). CSV /home/user/hawk-verify-done-2026-11-06.csv. Seen: Doctor-only no Space for import; espeak MP3 upload now 400 (WAV ok);
-  Users all 'Not Joined Yet'; Admin-only = FD worklist; Clinical staff visits 403; PDF advice overprint. API scoping via ?current_user_id= (security suspect, ask Jasper before probing).
-  Tips: page API calls need current_user_id + captured Bearer; restore intake 'If no preference' to Unassigned; custom export order via Hawkqa team letterheadLayoutId (restore null); invites to @example.com.
+  Users all 'Not Joined Yet'; Admin-only = FD worklist; Clinical staff visits 403; PDF advice overprint. API scoping via ?current_user_id= (security suspect, ask Jasper before probing). Tips: page API calls need current_user_id + captured Bearer; restore intake 'If no preference' to Unassigned; custom export order via Hawkqa team letterheadLayoutId (restore null); invites to @example.com.
 - Browser automation: global Playwright (`npm root -g`), scripts in scratch; rerouting traffic/injecting CORS is blocked (run app locally). Live recording + dictation use wss://stt-rt.soniox.com, blocked in the Hawk env (403): live-mic tests are BLOCKED.
 
 ## V2 testing facts (from dev @ a1bd5af, 2026-09-17)
