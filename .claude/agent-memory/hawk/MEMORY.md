@@ -87,7 +87,7 @@ No secrets, credentials or PHI here, ever.
   C04 other day's visits shown as "Later today"; C05 Esc drops focus; C06 type chips swap. V2-169 covers generic refusal reasons. TEST10 matrix: Schedule ON only Admin + Clinical staff,
   Cancel OFF for all (5 Hawkqa appts on Hawkqa Doctor 4-6 Nov can't be cancelled). Ready to consult = protected (DO-NOT-REGRESS:155). Holidays create = API only (hub open q). Scripts: scratch cal/*.js.
 - RETEST ALL 94 (5 Nov, 141a9d2, 4 parallel hawk agents): 80 PASS, 8 PARTIAL (64,196,206,215,232,316,325,328), 3 FAIL (191,315,342), 3 BLOCKED (219-221: soniox STT host
-  blocked by env network). Not commented (Jasper decides). TEST10 found: online booking ON rev 29 (left ON), Admin ticked for catalogue import (V2-303).
+  blocked by env network). Not commented (Jasper decides). TEST10 found: online booking ON rev 29 (left ON), Admin ticked for catalogue import (V2-303). VERIFY B (6 Nov, a53742c): 23 CONFIRMED, V2-311 HOLD ("1 lab tests imported"); booking PUT refuses reserved/dup custom labels (400); TEST10 booking form now rev 39 (= rev 29 content); Doctor-only gets "Workspace settings require Admin access" (no Space).
 - Retest D (5 Nov, 141a9d2): V2-218/222/223/224/233 PASS, 219/220/221 BLOCKED (live mic). Legal gate "Master Agreement v1.1" shows at first login per account. Visits made: 6661845e, 0f7e6a4e, stray patientless bad46c61.
 - Browser automation: global Playwright (`npm root -g`), scripts in scratch; rerouting traffic/injecting CORS is blocked (run app locally). Live recording + dictation use wss://stt-rt.soniox.com, blocked in the Hawk env (403): live-mic tests are BLOCKED.
 
