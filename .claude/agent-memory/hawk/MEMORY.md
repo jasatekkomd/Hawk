@@ -29,7 +29,7 @@ No secrets, credentials or PHI here, ever.
     on the page against the branch head to confirm what's live.
   - Login flow: `/signup` → "Log In" BUTTON (28 Oct) → Auth0 identifier → password → `/onboarding/pick-workspace` (click TEST10) → home.
     Saved storageState is unreliable (Auth0 re-asks): log in fresh per script; full page.goto re-asks for the workspace.
-- Old app-dev-v2 (from `dev`) is broken; baseline `ian-v2-lane` (ADR-018). Local run vs api-dev: gitignored `.env.local`, SPA client ID from the deployed bundle; never commit it.
+- Baseline `ian-v2-lane` (ADR-018); old app-dev-v2 broken. Local run: gitignored `.env.local`, never commit it.
 - ekko-design-system is NOT attached by default. In a cloud session, attach it read-only (`add_repo`
   Aidocscribe/ekko-design-system, read) and clone shallow to `/home/user/ekko-design-system`. Push is refused (read-only by design).
   Newest design: `anbu` @ cd2339d (26 Oct). Space pages = modules-proto/dashboard/settings/workspace/admin/<id>
@@ -82,8 +82,7 @@ No secrets, credentials or PHI here, ever.
   auto-sends; 1 real report 'Hawkqa offline test, please ignore' sent), V2-477 (Esc in dropdown closes dialog), V2-478 (Contact support layout). Empty-body POST /feedback = safe permission probe.
 - Onboarding retest (10 Nov, live 5 Nov build, 16 Testing tickets, reporter Vignesh, label onboarding; no comments/status changes per RETEST RULE): FIXED 25,265,35,46,41,234,260,261,258(attr only),23;
   NOT FIXED 24 (setup-workspace still generic), 257 (Privacy v1.0.0), 262 (rows kept, msgs still on border = V2-414; PA/Opt now invite OK); BLOCKED 39,49,256 (need new signup + inbox).
-  Tricks: Doctor +01 'Create a new workspace' = complete-profile form (tests V2-23/24/234); invite page only right after creating a ws (state not reloadable); decline = POST /userdetails/invites/:id/decline.
-  Throwaway 'Hawkqa Onbtest 1110/b/c' made + deleted (legal accept needed per ws; delete checkbox = click .workspace-delete-check). Doctor +01 got 1 invite email (declined).
+  Tricks: +01 'Create a new workspace' = complete-profile form; invite page only right after creating a ws; throwaways 'Hawkqa Onbtest 1110/b/c' made+deleted (legal accept per ws; click .workspace-delete-check).
 - Super Admin (hub b51d052, 2 Nov): `super_admin` = seeded system role code (roles.seed.js), Ekko internal, never an editable matrix column; guard lets it through every check. Not customer-assignable: Ekko support gets it only via V2-134 temporary grant (support@ekkomd.com, Admin emails 6-digit OTP, 7 days, revocable in Security; local, not deployed). Spec: features/workspace-support-access. Never verify permissions as super_admin (patient-management spec).
 - Signed synthetic visit: upload an espeak-ng consult mp3 (apt install espeak-ng; Recording options > Upload recording, ~35 s). QA doctor profile = Hawkqa Doctor, HQA-000123 (Jasper OK 23 Oct). Upload is disabled once a visit has a recording (Record More = live mic only).
 - Calendar (left rail, 4 Nov, 2cefdaa, 8 roles): doc https://claude.ai/artifact/57T5JRsLFd9Rkmi7Ephjzj, 155 cases, Run 1 = 96 run, 58 pass, 8 fail, 30 differ from design.
