@@ -141,7 +141,7 @@ No secrets, credentials or PHI here, ever.
   evidence (screenshots). NO recommended fixes, code pointers, root causes, file names or solutions. Focus on the issue.
   Every ticket Hawk files starts with an info panel, exactly: "Reported by Jasper P's Agent AI testing agent (built on
   Claude Code), filed on Jasper's behalf. Questions go to Jasper P." (Jasper, changed 2026-10-28; no "Hawk QA"). Edit descriptions that hold images as ADF (keep the media ids) or the images break; markdown edits are unsafe there.
-  Bulk bugs with screenshots: `python3 tools/jira_bug.py bugs.json` (create + attach, attribution panel added),
+  Bulk bugs with screenshots: `python3 tools/jira_bug.py bugs.json` (create + attach, attribution panel added; **bold**, "1." and "- " lists render since 10 Nov),
   `--attach KEY files...`, `--check`. Needs env JIRA_API_TOKEN (JIRA_EMAIL defaults to jasper.p@ekkomd.com). JIRA_API_TOKEN works in Hawk sessions started after it was saved (/myself 200; CREATE_ISSUES+ATTACHMENTS granted).
   Jira link API: {type:Blocks, inwardIssue:A, outwardIssue:B} means A blocks B.
   Before filing, JQL-search V2 for duplicates AND check ekko-ds/spec/DEBT: design-defined or undrawn behaviour is not an app bug.

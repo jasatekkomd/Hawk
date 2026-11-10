@@ -14,7 +14,7 @@ bugs.json is a list of objects:
 Auth: JIRA_API_TOKEN (required) and JIRA_EMAIL (default jasper.p@ekkomd.com).
 The token is read from the environment only and never printed.
 """
-import base64, json, mimetypes, os, sys, urllib.request, uuid
+import base64, json, mimetypes, os, re, sys, urllib.request, uuid
 
 SITE = os.environ.get("JIRA_SITE", "https://scribeai-2024.atlassian.net")
 PROJECT = os.environ.get("JIRA_PROJECT", "V2")
@@ -46,12 +46,46 @@ def call(method, path, body=None, headers=None, raw=None):
         return e.code, e.read().decode()[:500]
 
 
+def inline(text):
+    """Text nodes with **bold** turned into Jira strong marks."""
+    nodes = []
+    for i, part in enumerate(re.split(r"\*\*(.+?)\*\*", text)):
+        if part:
+            node = {"type": "text", "text": part}
+            if i % 2:
+                node["marks"] = [{"type": "strong"}]
+            nodes.append(node)
+    return nodes or [{"type": "text", "text": " "}]
+
+
 def adf(description_md):
-    """Attribution panel first, then each blank-line block as a paragraph."""
+    """Attribution panel first, then markdown-ish blocks: paragraphs, **bold**,
+    '- ' bullet lists and '1. ' numbered lists (a block may mix a lead line and a list)."""
     content = [{"type": "panel", "attrs": {"panelType": "info"}, "content": [
         {"type": "paragraph", "content": [{"type": "text", "text": ATTRIBUTION}]}]}]
     for block in [b for b in description_md.split("\n\n") if b.strip()]:
-        content.append({"type": "paragraph", "content": [{"type": "text", "text": block.strip()}]})
+        lines = [l.rstrip() for l in block.strip().split("\n")]
+        para, items, kind = [], [], None
+        def flush_list():
+            nonlocal items, kind
+            if items:
+                content.append({"type": "orderedList" if kind == "ol" else "bulletList", "content": [
+                    {"type": "listItem", "content": [{"type": "paragraph", "content": inline(t)}]} for t in items]})
+            items, kind = [], None
+        for l in lines:
+            m_ol, m_ul = re.match(r"^\d+\.\s+(.*)", l), re.match(r"^[-*]\s+(.*)", l)
+            if m_ol or m_ul:
+                if para:
+                    content.append({"type": "paragraph", "content": inline(" ".join(para))}); para = []
+                k = "ol" if m_ol else "ul"
+                if kind and kind != k:
+                    flush_list()
+                kind = k; items.append((m_ol or m_ul).group(1))
+            else:
+                flush_list(); para.append(l)
+        flush_list()
+        if para:
+            content.append({"type": "paragraph", "content": inline(" ".join(para))})
     return {"type": "doc", "version": 1, "content": content}
 
 
