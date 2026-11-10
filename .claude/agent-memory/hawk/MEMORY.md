@@ -181,8 +181,6 @@ No secrets, credentials or PHI here, ever.
   first invalid field focused, live region "N fields need attention before you can continue", all fields re-check on input.
 
 ## Design-system notes
-- ekko-ds rules: tokens only; control heights 24/30/36/44; even spacing; fixed status tone map;
-  no dashes and no "SOAP" in UI copy; no native `<select>`, `type="date"` or `title` tooltips.
 - Feedback states (Jasper, 2026-10-21: "the design system has the UI for all failure and success states"):
   success = toast with design copy ending "✓" ("Basic information saved ✓", "Patient created ✓"); refusal = toast naming
   what went wrong and the limit; persistent failure = `Alert` (info/warning/success/error tones); drawer problem with an
@@ -192,7 +190,6 @@ No secrets, credentials or PHI here, ever.
 - App gap (code, 2026-10-21): Patient Info profile save shows no success toast; design says "… information saved ✓".
 - Breakpoints: 1120 / 1024 (overlays; test exactly 1024) / 1000 / 480 floor (the dashboard has no phone design) /
   580 for onboarding.
-- ekko-ds README says "not shadcn/ui" but ADR-004 lists shadcn/ui: ask which applies when it matters.
 
 ## Open items
 - [ ] Merge `ekko-web-app` PR #77 (and `jasatekkomd/Hawk` PR #1).
@@ -201,4 +198,3 @@ No secrets, credentials or PHI here, ever.
 - [ ] **Parked (Jasper, 21 Oct):** confirm with Anbuu the ekko-ds treatment/copy for 5 undrawn Patients failure states (Patient Info
   validation + save failure, roster load failure, empty Documents, unopenable file), then update PAT-UX-028.
 - [ ] Fix `DEV_V2_VITE_CORE_SERVICE_URL` for app-dev-v2 or retire it. Doctor-only account on api-dev still missing.
-
